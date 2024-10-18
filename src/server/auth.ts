@@ -70,8 +70,8 @@ export const authOptions: NextAuthOptions = {
         user: {
           ...session.user,
           id: token.sub as string,
-          name: token.name,
-          email: token.email,
+          name: token.name as string,
+          email: token.email as string,
         }
       };
       return session;

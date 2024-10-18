@@ -1,6 +1,5 @@
 import bcrypt from "bcryptjs";
-import { signIn } from "next-auth/react";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { db } from "~/server/db";
 
 type reqDataType = {
@@ -9,7 +8,7 @@ type reqDataType = {
     password: string;
 }
 
-export async function POST(req: Response): Promise<NextResponse> {
+export async function POST(req: NextRequest): Promise<NextResponse> {
     const body = await req.json();
     const data = body.user as reqDataType;
 
@@ -31,7 +30,7 @@ export async function POST(req: Response): Promise<NextResponse> {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = await db.user.create({
+    await db.user.create({
         data: {
             name: username,
             email: email,

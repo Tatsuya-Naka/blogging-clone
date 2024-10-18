@@ -1,4 +1,4 @@
-import { getCsrfToken, getProviders } from "next-auth/react"
+import { getCsrfToken } from "next-auth/react"
 import SignInButton from "~/component/auth/sign-button";
 import SignCredentailForm from "~/component/auth/signin-credential-form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
@@ -6,10 +6,6 @@ import Image from "next/image";
 import paths from "~/server/paths";
 
 export default async function SignInPage() {
-    // What wrong
-    // const providers = await getProviders();
-    // const propsForOAuth = { providers: providers ?? [] };
-    // console.log(providers);
 
     const propsForCsrf = { csrfToken: await getCsrfToken() };
     const providers2nd = await fetch(paths.emergencyForOAuth())
@@ -51,16 +47,6 @@ export default async function SignInPage() {
                         <div className="w-full h-full">
                             {/* third party auth */}
                             <div className="mt-4 grid gap-3 w-full">
-                                {/* {Object.values(propsForOAuth.providers).map((provider) => (
-                                    <div key={provider.name}>
-                                        <SignInButton provider={provider}>
-                                            {getIcon(provider.id)}
-                                            <span className="flex w-full font-[500] text-basis justify-center items-center">
-                                                Signin with {provider.name}
-                                            </span>
-                                        </SignInButton>
-                                    </div>
-                                ))} */}
                                 {Object.values(data.providers).map((provider) => (
                                     (provider.id !== "credentials" &&
                                         <div key={provider.name}>
