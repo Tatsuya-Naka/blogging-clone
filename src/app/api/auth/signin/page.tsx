@@ -9,7 +9,7 @@ export default async function SignInPage() {
 
     const propsForCsrf = { csrfToken: await getCsrfToken() };
     const providers2nd = await fetch(paths.emergencyForOAuth())
-    const provider2ndA = await providers2nd.json() as Response;
+    const provider2ndA = await providers2nd.json() as {id: string, name: string}[];
     const data = { providers: provider2ndA ?? [] }
 
     const getIcon = (id: string) => {
@@ -50,7 +50,7 @@ export default async function SignInPage() {
                                 {Object.values(data.providers).map((provider) => (
                                     (provider.id !== "credentials" &&
                                         <div key={provider.name}>
-                                            <SignInButton provider={provider}>
+                                            <SignInButton id={provider.id}>
                                                 {getIcon(provider.id)}
                                                 <span className="flex w-full font-[500] text-basis justify-center items-center">
                                                     Signin with {provider.name}

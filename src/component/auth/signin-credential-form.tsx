@@ -8,6 +8,18 @@ interface SignCredentailFormProps {
     csrfToken: string | undefined;
 }
 
+type responseType = {
+    message: string;
+    user: {
+        data: {
+            data: string;
+            email: string;
+            password: string;
+        }
+    }
+    error: string;
+}
+
 export default function SignCredentailForm({ csrfToken }: SignCredentailFormProps) {
     const [user, setUser] = useState({
         username: "",
@@ -27,7 +39,7 @@ export default function SignCredentailForm({ csrfToken }: SignCredentailFormProp
             body: JSON.stringify({ user })
         });
 
-        const userInfo = await response.json();
+        const userInfo = await response.json() as responseType;
         setErrors(userInfo.error);
 
         if (userInfo.message === "Success") {
