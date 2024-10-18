@@ -9,7 +9,7 @@ type reqDataType = {
     password: string;
 }
 
-export async function POST(req: Response) {
+export async function POST(req: Response): Promise<NextResponse> {
     const body = await req.json();
     const data = body.user as reqDataType;
 
