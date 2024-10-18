@@ -2,12 +2,12 @@ import LogInButton from "~/component/auth/login-button";
 import LoginCredentailForm from "~/component/auth/login-credential-form";
 import Image from "next/image";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import paths from "~/server/paths";
+// import paths from "~/server/paths";
 
 export default async function LogInPage() {
-    const providers = await fetch(paths.oAuthProviders());
-    const providersJson= await providers.json() as {id: string, name: string}[];
-    const data = { providers: providersJson ?? [] }
+    // const providers = await fetch(paths.oAuthProviders());
+    // const providersJson= await providers.json() as {id: string, name: string}[];
+    // const data = { providers: providersJson ?? [] }
 
     const getIcon = (id: string) => {
         switch (id) {
@@ -45,7 +45,7 @@ export default async function LogInPage() {
                         <div className="w-full h-full">
                             {/* third party auth */}
                             <div className="mt-4 grid gap-3 w-full">
-                                {Object.values(data.providers).map((provider) => (
+                                {/* {Object.values(data.providers).map((provider) => (
                                     (provider.id !== 'credentials' &&
                                         <div key={provider.name}>
                                             <LogInButton id={provider.id}>
@@ -56,7 +56,19 @@ export default async function LogInPage() {
                                             </LogInButton>
                                         </div>
                                     )
-                                ))}
+                                ))} */}
+                                <LogInButton id="github">
+                                    {getIcon("github")}
+                                    <span className="flex w-full font-[500] text-basis justify-center items-center">
+                                        Login with {"GitHub"}
+                                    </span>
+                                </LogInButton>
+                                <LogInButton id="google">
+                                    {getIcon("google")}
+                                    <span className="flex w-full font-[500] text-basis justify-center items-center">
+                                        Login with {"Google"}
+                                    </span>
+                                </LogInButton>
                             </div>
                             <div className="">
                                 {/* Credentials */}
