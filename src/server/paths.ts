@@ -15,7 +15,7 @@ const paths = {
         return '/home';
     },
     oAuthProviders() {
-        return `/api/auth/providers`;
+        return `http://localhost:3000/api/auth/providers`;
     },
     login() {
         return `/api/auth/login`;
