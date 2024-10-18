@@ -31,7 +31,7 @@ export default function SignCredentailForm({ csrfToken }: SignCredentailFormProp
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const response = await fetch("/api/register", {
+        const response = await fetch(paths.authRegisterPostReq(), {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

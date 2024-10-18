@@ -14,14 +14,17 @@ const paths = {
     authenticateUserHome() {
         return '/home';
     },
-    emergencyForOAuth() {
-        return 'http://localhost:3000/api/auth/providers';
+    oAuthProviders() {
+        return `/api/auth/providers`;
     },
     login() {
-        return '/api/auth/login';
+        return `/api/auth/login`;
     },
     signOut() {
-        return '/api/auth/signout';
+        return `/api/auth/signout`;
+    },
+    authRegisterPostReq() {
+        return `/api/register`
     },
 };
 

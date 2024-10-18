@@ -8,7 +8,7 @@ import paths from "~/server/paths";
 export default async function LogInPage() {
     const propsForCsrf = { csrfToken: await getCsrfToken() };
 
-    const providers2nd = await fetch(paths.emergencyForOAuth())
+    const providers2nd = await fetch(paths.oAuthProviders())
     const provider2ndA = await providers2nd.json() as {id: string, name: string}[];
     const data = { providers: provider2ndA ?? [] }
 
