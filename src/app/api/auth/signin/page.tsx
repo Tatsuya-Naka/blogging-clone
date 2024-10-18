@@ -3,9 +3,10 @@ import SignCredentailForm from "~/component/auth/signin-credential-form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import Image from "next/image";
 import paths from "~/server/paths";
+import { getProviders } from "next-auth/react";
 
 export default async function SignInPage() {
-    const providers2nd = await fetch(paths.oAuthProviders())
+    const providers2nd = await fetch(paths.oAuthProviders());
     const provider2ndA = await providers2nd.json() as {id: string, name: string}[];
     const data = { providers: provider2ndA ?? [] }
 
