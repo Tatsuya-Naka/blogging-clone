@@ -49,6 +49,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
         return NextResponse.json({ message: "Success", user: { data: { name: username, email: email, password: password } } });
     } catch (err) {
-        return NextResponse.json({error: "Internal Server Error"}, {status: 500});
+        return NextResponse.json({error: err}, {status: 500});
     } 
 }

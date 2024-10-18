@@ -39,7 +39,7 @@ export default function SignCredentailForm() {
         setErrors(userInfo.error);
 
         if (userInfo.message === "Success") {
-            const res = await signIn("credentials", {
+            await signIn("credentials", {
                 email: userInfo.user.data.email,
                 password: userInfo.user.data.password,
                 redirect: false,

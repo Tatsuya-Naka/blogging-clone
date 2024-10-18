@@ -100,7 +100,7 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password", placeholder: "password" }
       },
       // Only initiate when trying to login
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         // check to see if the email and password are valid
         if (!credentials?.email || !credentials.password) {
           return null;
