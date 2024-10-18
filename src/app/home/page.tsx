@@ -1,13 +1,15 @@
-import Link from "next/link";
-
-import { LatestPost } from "~/app/_components/post";
-import Header from "~/component/header/header";
+import { redirect } from "next/navigation";
 import { getServerAuthSession } from "~/server/auth";
-import { HydrateClient } from "~/trpc/server";
+import paths from "~/server/paths";
+import { api, HydrateClient } from "~/trpc/server";
+import Link from "next/link";
+import Header from "~/component/header/header";
 
 export default async function Home() {
   const session = await getServerAuthSession();
-
+  if (!session) {
+    redirect(paths.home());
+  }
   return (
     <HydrateClient>
       <Header />
@@ -62,16 +64,16 @@ export default async function Home() {
                 <Link
                   href={session ? "/api/auth/signout" : "/api/auth/login"}
                   className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
-                  >
-                    {session ? "Sign out" : "Log in"}
+                >
+                  {session ? "Sign out" : "Log in"}
                 </Link>
               </div>
             }
           </div>
 
-          {session?.user && <LatestPost />}
+          {/* {session?.user && <LatestPost />} */}
         </div>
       </main>
     </HydrateClient>
-  );
+  )
 }

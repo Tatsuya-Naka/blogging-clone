@@ -5,8 +5,10 @@ import {
   type NextAuthOptions,
 } from "next-auth";
 import { type Adapter } from "next-auth/adapters";
-import DiscordProvider from "next-auth/providers/discord";
-
+import GithubProvider from "next-auth/providers/github";
+import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
+import bcrypt from "bcryptjs";
 import { env } from "~/env";
 import { db } from "~/server/db";
 
@@ -37,21 +39,89 @@ declare module "next-auth" {
  * @see https://next-auth.js.org/configuration/options
  */
 export const authOptions: NextAuthOptions = {
+  session: {
+    strategy: 'jwt',
+    maxAge: 24 * 60 * 60, // 1 day in seconds
+  },
+  jwt: {
+    secret: process.env.NEXTAUTH_SECRET,
+  },
+  secret: process.env.NEXTAUTH_SECRET,
+  debug: process.env.NODE_ENV === 'development',
   callbacks: {
-    session: ({ session, user }) => ({
-      ...session,
-      user: {
-        ...session.user,
-        id: user.id,
-      },
-    }),
+    // session: ({ session, user, token }) => ({
+    //   ...session,
+    //   user: {
+    //     ...session.user,
+    //     id: user.id,
+    //   },
+    // }),
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.name = user.name;
+        token.email = user.email;
+      }
+      return token;
+    },
+    async session({ session, token}) {
+      session = {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.sub as string,
+          name: token.name,
+          email: token.email,
+        }
+      };
+      return session;
+    },
+    async redirect({ url, baseUrl }) {
+      return url.startsWith(baseUrl) ? `${baseUrl}` : '/';
+    },
   },
   adapter: PrismaAdapter(db) as Adapter,
   providers: [
-    DiscordProvider({
-      clientId: env.DISCORD_CLIENT_ID,
-      clientSecret: env.DISCORD_CLIENT_SECRET,
+    GoogleProvider({
+      clientId: env.GOOGLE_CLIENT_ID,
+      clientSecret: env.GOOGLE_CLIENT_SECRET,
     }),
+    GithubProvider({
+      clientId: env.GITHUB_CLIENT_ID,
+      clientSecret: env.GITHUB_CLIENT_SECRET,
+    }),
+    CredentialsProvider({
+      name: 'credentials',
+
+      // For default login page
+      credentials: {
+        // username: { label: "Username", type: "text", placeholder: "Taro" },
+        email: { label: "Email", type: "email", placeholder: "eamil@example.com" },
+        password: { label: "Password", type: "password", placeholder: "password" }
+      },
+      // Only initiate when trying to login
+      async authorize(credentials, req) {
+        // check to see if the email and password are valid
+        if (!credentials?.email || !credentials.password) {
+          return null;
+        }
+        // check to see if the user exists
+        const user = await db.user.findUnique({
+          where: { email: credentials.email }
+        });
+        if (!user) {
+          return null;
+        }
+
+        // check to see if the password is matched
+        const passwordMatch = await bcrypt.compare(credentials.password, user.password ?? "");
+        if (!passwordMatch) {
+          return null;
+        }
+
+        return user;
+      },
+    })
     /**
      * ...add more providers here.
      *
