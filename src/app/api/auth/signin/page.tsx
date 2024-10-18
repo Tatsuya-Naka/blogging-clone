@@ -1,4 +1,3 @@
-import { getCsrfToken } from "next-auth/react"
 import SignInButton from "~/component/auth/sign-button";
 import SignCredentailForm from "~/component/auth/signin-credential-form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
@@ -6,8 +5,6 @@ import Image from "next/image";
 import paths from "~/server/paths";
 
 export default async function SignInPage() {
-
-    const propsForCsrf = { csrfToken: await getCsrfToken() };
     const providers2nd = await fetch(paths.oAuthProviders())
     const provider2ndA = await providers2nd.json() as {id: string, name: string}[];
     const data = { providers: provider2ndA ?? [] }
@@ -70,7 +67,7 @@ export default async function SignInPage() {
                                 </div>
 
                                 {/* Email & username & password */}
-                                <SignCredentailForm csrfToken={propsForCsrf.csrfToken} />
+                                <SignCredentailForm />
                             </div>
                         </div>
                     </div>

@@ -4,10 +4,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 
-interface SignCredentailFormProps {
-    csrfToken: string | undefined;
-}
-
 type responseType = {
     message: string;
     user: {
@@ -20,7 +16,7 @@ type responseType = {
     error: string;
 }
 
-export default function SignCredentailForm({ csrfToken }: SignCredentailFormProps) {
+export default function SignCredentailForm() {
     const [user, setUser] = useState({
         username: "",
         email: "",
@@ -57,7 +53,6 @@ export default function SignCredentailForm({ csrfToken }: SignCredentailFormProp
             className="flex items-center flex-col justify-between w-full"
             onSubmit={handleSubmit}
         >
-            <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
             <label className="w-full flex flex-col text-base gap-1 mb-3">
                 Username
                 <input

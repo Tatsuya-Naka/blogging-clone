@@ -5,11 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-interface SignCredentailFormProps {
-    csrfToken: string | undefined;
-}
-
-export default function LoginCredentailForm({ csrfToken }: SignCredentailFormProps) {
+export default function LoginCredentailForm() {
     const [user, setUser] = useState({
         email: "",
         password: ""
@@ -36,7 +32,6 @@ export default function LoginCredentailForm({ csrfToken }: SignCredentailFormPro
             // action={action}
             onSubmit={handleSubmit}
         >
-            <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
             <label className="w-full flex flex-col text-base gap-1 mb-3">
                 Email
                 <input
