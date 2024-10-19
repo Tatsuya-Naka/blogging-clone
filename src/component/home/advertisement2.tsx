@@ -7,7 +7,7 @@ import paths from "~/server/paths";
 
 export default function Ad2() {
     return (
-        <div className="md:p-5 p-4 text-2xl w-full shadow-md bg-white mb-1 rounded-md">
+        <div className="md:p-5 p-4 text-2xl w-full shadow-md bg-white mb-1 md:rounded-md">
             {/* Header */}
             <div className="flex md:mb-2 mb-3 items-center justify-between">
                 {/* Title */}
