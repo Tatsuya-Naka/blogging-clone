@@ -1,8 +1,6 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { AiOutlineFacebook } from "react-icons/ai";
-import { FaGithub, FaInstagram, FaTwitch, FaXTwitter, FaYoutube } from "react-icons/fa6";
 import { IoIosMenu } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import paths from "~/server/paths";

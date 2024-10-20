@@ -6,7 +6,6 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { env } from "~/env";
 import { getServerAuthSession } from "~/server/auth";
-import { db } from "~/server/db";
 import paths from "~/server/paths";
 import { client } from "~/server/s3";
 

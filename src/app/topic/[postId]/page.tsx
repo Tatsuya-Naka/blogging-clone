@@ -157,7 +157,7 @@ export default async function TopicPage() {
                                         </div>
                                         {/* Title */}
                                         <h1 className="lg:text-5xl md:text-4xl sm:font-[800] font-[700] leading-xl text-3xl mb-2">
-                                            Testing hell 😱. Honest question. How do you survive? What's your secret?
+                                            Testing hell 😱. Honest question. How do you survive? What is your secret?
                                         </h1>
 
                                         {/* Tags */}
@@ -174,7 +174,7 @@ export default async function TopicPage() {
                                     {/* Content */}
                                     <div className="lg:px-16 p-3 md:px-12 md:py-8">
                                         <div className="text-xl">
-                                            We've just spent the worst couple of hours trying to work with Jest with SVG, nanoid, ... Anything that's slightly out of the ordinary Jest won't work and we found out we were spending more time debugging Jest than debugging our code. So... please help us. How do you survive the testing hell??
+                                            We have just spent the worst couple of hours trying to work with Jest with SVG, nanoid, ... Anything that is slightly out of the ordinary Jest will not work and we found out we were spending more time debugging Jest than debugging our code. So... please help us. How do you survive the testing hell??
                                         </div>
                                     </div>
 

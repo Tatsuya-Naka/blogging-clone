@@ -1,5 +1,4 @@
 import { FiMoreHorizontal } from "react-icons/fi";
-import { VscChromeClose } from "react-icons/vsc";
 import Link from "next/link";
 import Image from "next/image";
 import adImage1 from "../../../public/simple_a.png"
