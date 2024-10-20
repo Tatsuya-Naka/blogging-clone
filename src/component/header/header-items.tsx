@@ -40,7 +40,7 @@ export default function HeaderItems({ id, name, image }: HeaderItemsProps) {
                 {/* create post or create account */}
                 <div className="...">
                     <Link
-                        href={id ? "/" : paths.signInPath()}
+                        href={id ? paths.createNewTopic() : paths.signInPath()}
                         className="flex items-center text-nowrap mr-2 justify-center bg-transparent hover:bg-blue-300 text-blue-700 hover:text-white border-blue-700 hover:border-blue-300 border-2 px-4 py-1.5 rounded-md"
                     >
                         {id ? "Create post" : "Create account"}
@@ -84,7 +84,7 @@ export default function HeaderItems({ id, name, image }: HeaderItemsProps) {
             </div>
             {/* Drop */}
             {isIconClick &&
-                <div className="h-100 absolute mt-14 left-2 right-2  min-w-[250px] z-[100] sm:w-[250px] sm:left-auto inline-block bg-white text-gray-800 rounded-md shadow-xl p-2 min-w-[250px]">
+                <div className="h-100 absolute mt-14 left-2 right-2  min-w-[250px] z-[400] sm:w-[250px] sm:left-auto inline-block bg-white text-gray-800 rounded-md shadow-xl p-2 min-w-[250px]">
                     <ul className="block">
                         <li className="text-left pb-2 mb-2 border-b border-solid border-gray-500">
                             {/* Profile page */}
@@ -108,7 +108,7 @@ export default function HeaderItems({ id, name, image }: HeaderItemsProps) {
                         </li>
                         <li className="">
                             <Link
-                                href="/"
+                                href={paths.createNewTopic()}
                                 className="bg-transparent hover:bg-blue-300 text-gray-700 hover:blue-500 flex px-4 py-2 rounded-md w-full"
                             >
                                 Create Post

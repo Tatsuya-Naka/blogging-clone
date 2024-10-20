@@ -22,7 +22,7 @@ export default function LoginCredentailForm() {
 
         setErrors(result?.error ?? "");
         if (result?.ok) {
-            router.push(paths.authenticateUserHome());
+            router.push(paths.home());
         }
     };
 

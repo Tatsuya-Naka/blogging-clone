@@ -55,7 +55,7 @@ export default function Ad1() {
                             href="https://github.com/Tatsuya-Naka"
                             className=""
                         >
-                            <div className="h-[60px] w-[60px] inline-block relative rounded-md pt-3 pr-2.5 pb-4 pl-4">
+                            <div className="h-[60px] w-[60px] inline-block relative z-0 rounded-md pt-3 pr-2.5 pb-4 pl-4">
                                 <Image 
                                     src="https://media.dev.to/dynamic/image/width=775%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Forganization%2Fprofile_image%2F1%2Fd908a186-5651-4a5a-9f76-15200bc6801f.jpg"
                                     alt="Image"
@@ -63,7 +63,7 @@ export default function Ad1() {
                                     height={33}
                                     className="rounded-md"
                                 />
-                                <div className="border-2 border-solid border-white w-4 h-4 inline-block absolute right-2 bottom-2.5 max-w-9 max-h-9 rounded-full">
+                                <div className="border-2 border-solid border-white w-4 h-4 inline-block absolute z-0 right-2 bottom-2.5 max-w-9 max-h-9 rounded-full">
                                     <Image 
                                         src="https://media.dev.to/dynamic/image/width=775%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3%2F13d3b32a-d381-4549-b95e-ec665768ce8f.png"
                                         alt="image"

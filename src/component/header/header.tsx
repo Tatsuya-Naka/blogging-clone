@@ -10,8 +10,8 @@ export default async function Header() {
     const session = await getServerAuthSession();
 
     return (
-        <nav className="bg-white z-100 top-0 right-0 left-0 h-14 fixed">
-            <div className="max-w-[1380px] w-full h-full flex m-auto relative">
+        <nav className="bg-white top-0 right-0 left-0 h-14 fixed">
+            <div className="max-w-[1380px] w-full h-full flex m-auto relative z-[100]">
                 {/* Menu, Title, and search box */}
                 <div className="px-2 flex items-center flex-row w-full m-auto h-full h-full">
                     {/* Menu */}
@@ -22,7 +22,7 @@ export default async function Header() {
                     {/* TItle icon */}
                     <div className="flex items-center ">
                         <Link
-                            href={session?.user ? paths.authenticateUserHome() : paths.home()}
+                            href={paths.home()}
                         >
                             <Image
                                 src="https://media.dev.to/dynamic/image/quality=100/https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"

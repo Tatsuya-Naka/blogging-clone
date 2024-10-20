@@ -11,9 +11,6 @@ const paths = {
     signInWithCredentialCallbackUrl() {
         return '/api/auth/signin/credentials'
     },
-    authenticateUserHome() {
-        return '/home';
-    },
     login() {
         return `/api/auth/login`;
     },
@@ -22,6 +19,12 @@ const paths = {
     },
     authRegisterPostReq() {
         return `/api/register`
+    },
+    createNewTopic() {
+        return '/new';
+    },
+    topicPage(postId: string) {
+        return `/topic/${postId}`;
     },
 };
 

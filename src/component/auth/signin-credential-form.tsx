@@ -44,7 +44,7 @@ export default function SignCredentailForm() {
                 password: userInfo.user.data.password,
                 redirect: false,
             })
-            router.push(paths.authenticateUserHome());
+            router.push(paths.home());
         }
     };
 
