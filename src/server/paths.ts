@@ -23,8 +23,11 @@ const paths = {
     createNewTopic() {
         return '/new';
     },
-    topicPage(postId: string) {
-        return `/topic/${postId}`;
+    topicPage(topicId: string) {
+        return `/topic/${topicId}`;
+    },
+    deleteTopicPage(userId: string, topicId: string) {
+        return `/topic/edit/${topicId}/${userId}`;
     },
 };
 

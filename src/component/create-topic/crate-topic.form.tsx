@@ -8,9 +8,23 @@ import { TbNut } from "react-icons/tb";
 import { useFormState } from "react-dom";
 import * as actions from "~/actions"
 import PublishButton from "./publish-button";
+import { useState } from "react";
+import SaveButton from "./save-button";
 
 export default function CreateTopicForm() {
-    const [formState, action] = useFormState(actions.createTopic, {errors: {}})
+    const [isSubmit, setIsSubmit] = useState(true);
+    const [formState, action] = useFormState(actions.createTopic.bind(null, isSubmit), { errors: {} });
+    const [bgImageFile, setImageFile] = useState("");
+
+    const handleImageFile = (e: React.FormEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        const files = e.currentTarget.files;
+        if (files && files.length > 0 && files[0]) {
+            const file = files[0];
+            // Temporary want to see the upload image
+            setImageFile(window.URL.createObjectURL(file));   
+        }
+    };
 
     return (
         <form className="md:grid md:grid-cols-[64px_7fr_3fr] max-w-[1380px] lg:px-4 md:px-2 min-h-screen gap-x-4 mx-auto text-base"
@@ -77,15 +91,36 @@ export default function CreateTopicForm() {
                     {/* Add image */}
                     <div className="flex flex-row sm:items-center sm:mb-5 mb-4 items-center">
                         {/* Need to add a feature to change the ui after adding an image here */}
-                        <div className="flex items-center">
-                            <label className="bg-transparent cursor-pointer border-gray-300 text-black border-2 border-solid rounded-md py-1.5 px-3.5 leading-base shadow-md text-base ">
-                                Add a cover image
-                                <input
-                                    type="file"
-                                    className="hidden "
-                                    name="coverImage"
+                        <div className="flex items-center gap-8">
+                            {bgImageFile &&
+                                <Image
+                                    src={bgImageFile}
+                                    alt="Uploaded Image"
+                                    width={250}
+                                    height={105}
+                                    className="rounded-md mb-2 object-cover aspect-[250/105] max-w-[250px] max-h-[105px]"
                                 />
-                            </label>
+                            }
+                            <div className="flex items-center">
+                                <label className="bg-transparent cursor-pointer border-gray-300 text-black border-2 border-solid rounded-md py-1.5 px-3.5 leading-base shadow-md text-base ">
+                                    {bgImageFile ? "Change" : "Add a cover image"}
+                                    <input
+                                        type="file"
+                                        className="hidden "
+                                        name="coverImage"
+                                        onChange={handleImageFile}
+                                    />
+                                </label>
+                                {bgImageFile &&
+                                    <button
+                                        type="button"
+                                        onClick={() => setImageFile("")}
+                                        className="bg-transparent cursor-pointer text-red-600 rounded-md py-1.5 px-3.5 leading-base text-base "
+                                    >
+                                        Remove
+                                    </button>
+                                }
+                            </div>
                         </div>
                     </div>
 
@@ -97,6 +132,11 @@ export default function CreateTopicForm() {
                             placeholder="New post title here..."
                             required
                         />
+                        {formState.errors.title &&
+                            <div className="w-full bg-red-500 text-white h-8 flex items-center justify-center text-wrap rounded-md">
+                                {formState.errors.title}
+                            </div>
+                        }
                     </div>
 
                     {/* Tags */}
@@ -141,6 +181,11 @@ export default function CreateTopicForm() {
                             className="resize-none h-full w-full outline-none text-lg bg-transparent leading-base text-black"
                             placeholder="Write your post content here..."
                         />
+                        {formState.errors.content &&
+                            <div className="w-full bg-red-500 text-white h-8 flex items-center justify-center text-wrap rounded-md">
+                                {formState.errors.content}
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -148,6 +193,11 @@ export default function CreateTopicForm() {
             {/* Description Can see different discription while editing*/}
             <div className="md:block hidden">
                 <div className="sticky top-[360px]">
+                    {formState.errors._form &&
+                        <div className="flex items-center justify-center h-8 bg-red-500 text-white rounded-md shadow-md mb-4">
+                            Error occured
+                        </div>
+                    }
                     <div>
                         <h4 className="text-lg mb-2 ">Edit Basics</h4>
                         <ul className="pl-6 list-disc">
@@ -165,13 +215,8 @@ export default function CreateTopicForm() {
 
             {/* Button */}
             <div className="lg:col-start-2 md:col-span-2 md:p-0 h-[88px] flex items-center md:px-0 px-2">
-                <PublishButton />
-                <button
-                    type="submit"
-                    className="mr-2 bg-transparent text-black hover:bg-blue-200 hover:text-blue-500 font-[500] inline-block py-2 px-4 rounded-md text-center"
-                >
-                    Save draft
-                </button>
+                <PublishButton onClick={() => setIsSubmit(true)} isSubmit={isSubmit} />
+                <SaveButton onClick={() => setIsSubmit(false)} isSubmit={isSubmit} />
 
                 <button
                     type="button"

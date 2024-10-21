@@ -52,9 +52,33 @@ model User {
   emailVerified DateTime?
   image         String?
   password      String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
   accounts      Account[]
   posts         Post[]
   sessions      Session[]
+  topics        Topic[]
+}
+
+model Topic {
+  id      String  @id @default(cuid())
+  bgImage String?
+  title   String? 
+  tags    Tag[]
+  content String?
+  isPublic Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId  String
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Tag {
+  id    String  @id @default(cuid())
+  name  String?
+  sub   String?
+  topicId String
+  topic Topic @relation(fields: [topicId], references: [id], onDelete: Cascade)
 }
 
 model VerificationToken {

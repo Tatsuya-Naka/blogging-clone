@@ -106,7 +106,7 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
         // check to see if the user exists
-        const user = await db.user.findUnique({
+        const user = await db.user.findFirst({
           where: { email: credentials.email }
         });
         if (!user) {

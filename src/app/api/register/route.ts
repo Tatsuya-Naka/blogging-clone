@@ -30,7 +30,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         if (!username || !email || !password) {
             return NextResponse.json({ error: "Missing username, email, or password!!" }, { status: 400 });
         }
-        const existUser = await db.user.findUnique({
+        const existUser = await db.user.findFirst({
             where: { email: email }
         });
 

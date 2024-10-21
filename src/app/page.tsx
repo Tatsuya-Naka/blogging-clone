@@ -2,7 +2,6 @@ import Link from "next/link";
 import SideLinksPages from "~/component/common/side-pages";
 import Header from "~/component/header/header";
 import HomeLists from "~/component/home/home-lists";
-import { getServerAuthSession } from "~/server/auth";
 import { HydrateClient } from "~/trpc/server";
 
 export default async function Home() {

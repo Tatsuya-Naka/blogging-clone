@@ -18,12 +18,16 @@ const config = {
             },
             {
                 protocol: 'https',
-                hostname: 'avatars.githubusercontent.com',            
+                hostname: 'avatars.githubusercontent.com',
             },
             {
                 protocol: 'https',
                 hostname: 'lh3.googleusercontent.com',
-              },
+            },
+            {
+                protocol: 'https',
+                hostname: `${process.env.S3_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com`,                
+            },
         ],
     },
 };
