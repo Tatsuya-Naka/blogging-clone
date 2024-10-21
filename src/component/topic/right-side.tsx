@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FaFire } from "react-icons/fa";
-import { getServerAuthSession } from '~/server/auth';
+import { getServerAuthSession } from "~/server/auth";
 import PostDateFormatter from "../common/post-date-format";
 import type { User } from "@prisma/client";
 

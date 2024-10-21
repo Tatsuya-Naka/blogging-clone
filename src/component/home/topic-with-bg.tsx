@@ -1,75 +1,46 @@
 import Image from "next/image"
 import Link from "next/link"
-import bgImage from "../../../public/simple_b.png"
 import { BsEmojiSunglasses } from "react-icons/bs";
 import { BsEmojiKiss } from "react-icons/bs";
 import { FaRegComment } from "react-icons/fa6";
 import { CiBookmark } from "react-icons/ci";
+import { db } from "~/server/db";
+import paths from "~/server/paths";
+import ProfilePupUp from "./user-profile-props";
+import { getServerAuthSession } from "~/server/auth";
 
 export default async function TopicWithBg() {
-    const popup = () => {
-        return (
-            <div className="absolute z-10 sm:w-[360px] shadow-md grid p-4 gap-4 bg-white rounded-md border-t-[2rem] border-t-solid border-t-black">
-                {/* User info */}
-                <div className="-mt-8">
-                    {/* User profile */}
-                    <Link
-                        href="/"
-                        className="flex"
-                    >
-                        <span className="mr-2 shrink-0 w-12 h-12 inline-block rounded-full bg-green-500 align-middle">
-                            <Image
-                                src=""
-                                alt="Image"
-                                width={100}
-                                height={100}
-                                className="rounded-full w-full h-full inline-block align-bottom"
-                            />
-                        </span>
-                        <span className="mt-5 text-black sm:text-2xl text-xl sm:leading-base font-[700]">
-                            {"Tatsuya"}
-                        </span>
-                    </Link>
-                </div>
-
-                {/* Follow or Edit */}
-                <Link href="/" className="w-full py-2 px-4 text-base block rounded-md leading-base font-[500] text-center cursor-pointer bg-blue-800 hover:opacity-60 text-lime-50">
-                    Edit Profile
-                </Link>
-
-                {/* Bio */}
-                <p className="text-gray-500">bio</p>
-
-                {/* Date or st */}
-                <div className="">
-                    <ul>
-                        <li className="mb-0 flex items-center gap-2">
-                            <span className="text-sm font-[700] text-black uppercase">Joined</span>
-                            Sep 4, 2024
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        )
-    }
+    const topic = await db.topic.findMany({
+        where: {
+            isPublic: true,
+        },
+        include: {
+            user: true,
+            tags: true,
+        },
+        take: 1
+    });
+    const session = await getServerAuthSession();
 
     return (
         <div className="py-0 h-full w-full bg-white md:rounded-md shadow-md">
             {/* Bg image */}
-            <div className="object-contain max-h-[calc(90vh-56px)] overflow-hidden">
-                <Link
-                    href="/"
-                    className="h-full"
-                >
-                    <Image
-                        src={bgImage}
-                        alt="Image"
-                        width={1000}
-                        height={420}
-                        className="aspect-[650/273] w-full h-full md:rounded-t-md"
-                    />
-                </Link>
-            </div>
+            {topic[0]?.bgImage &&
+                < div className="object-contain max-h-[calc(90vh-56px)] overflow-hidden">
+                    <Link
+                        href="/"
+                        className="h-full"
+                    >
+                        <Image
+                            src={topic[0].bgImage}
+                            alt="Image"
+                            width={1000}
+                            height={420}
+                            className="aspect-[650/273] w-full h-full md:rounded-t-md object-cover"
+                        />
+                    </Link>
+                </div>
+            }
 
             {/* Title */}
             <div className="md:p-5 p-4 sm:text-2xl mb-2 md:rounded-b-md">
@@ -82,44 +53,25 @@ export default async function TopicWithBg() {
                                 href="/"
                                 className="w-8 h-8 inline-block rounded-full shrink-0"
                             >
-                                <Image
-                                    src={bgImage}
-                                    alt="User icon"
-                                    width={90}
-                                    height={90}
-                                    className="rounded-full h-full w-full align-bottom"
-                                />
+                                {topic[0]?.user.image ?
+
+                                    <Image
+                                        src={topic[0]?.user.image}
+                                        alt="User icon"
+                                        width={90}
+                                        height={90}
+                                        className="rounded-full h-full w-full align-bottom"
+                                    />
+                                    :
+                                    <div className="rounded-full h-[90px] w-[90px] bg-lime-500" />
+                                }
                             </Link>
                         </div>
 
                         {/* Name & Popup */}
-                        <div className="mr-2">
-                            {/* Go to the user profile */}
-                            <Link
-                                href="/"
-                                className="md:hidden font-[500] text-black p-1 cursorpointer "
-                            >
-                                {"Tatsuya"}
-                            </Link>
-                            <div className="md:inline-block hidden relative font-[500]">
-                                <button
-                                    type="button"
-                                    className="text-sm p-1 -ml-1 -my-2 bg-transparent hover:bg-gray-50 text-black rounded-md"
-                                >
-                                    {"Tatsuya"}
-                                </button>
-
-                                {/* Pop up */}
-                                {/* <div>
-                                    {popup()}
-                                </div> */}
-                            </div>
-
-                            {/* Date created */}
-                            <Link href="/" className="text-sm text-black">
-                                <p className="pl-1">Sep 7</p>
-                            </Link>
-                        </div>
+                        {topic[0]?.updatedAt &&
+                            <ProfilePupUp path={"/"} date={topic[0]?.updatedAt} user={topic[0].user} visitId={session?.user.id ?? ""}/>
+                        }
                     </div>
                 </div>
 
@@ -128,10 +80,10 @@ export default async function TopicWithBg() {
                     {/* title */}
                     <h2 className="md:mb-1 text-black text-2xl font-bold hover:text-blue-800">
                         <Link
-                            href="/"
+                            href={paths.topicPage(topic[0]?.id ?? "/")}
                             className=""
                         >
-                            17 Must-know React Projects for Developers
+                            {topic[0]?.title}
                         </Link>
                     </h2>
 
@@ -156,23 +108,23 @@ export default async function TopicWithBg() {
                         <div className="flex -ml-2">
                             {/* Topic id */}
                             <Link
-                                href="/"
+                                href={paths.topicPage(topic[0]?.id ?? "")}
                                 className="pl-2 bg-transparent hover:bg-gray-100 rounded-md w-full px-1 py-3 flex gap-2 leading-base items-center "
                             >
                                 <div className="flex items-center ">
                                     <div className="flex items-center">
                                         {/* Reaction Icon */}
                                         <span className="inline-block border-2 bg-gradient-to-r from-cyan-200 to-blue-200 flex items-center justify-center border-solid border-white rounded-full -mr-3 w-[28px] h-[28px]">
-                                            <BsEmojiSunglasses size={18}/>
+                                            <BsEmojiSunglasses size={18} />
                                         </span>
                                         <span className="inline-block border-2 bg-gradient-to-r from-cyan-200 to-blue-200 flex items-center justify-center border-solid border-white rounded-full -mr-3 w-[28px] h-[28px]">
-                                            <BsEmojiKiss size={18}/>
+                                            <BsEmojiKiss size={18} />
                                         </span>
                                         <span className="inline-block border-2 bg-gradient-to-r from-cyan-200 to-blue-200 flex items-center justify-center border-solid border-white rounded-full -mr-3 w-[28px] h-[28px]">
-                                            <BsEmojiSunglasses size={18}/>
+                                            <BsEmojiSunglasses size={18} />
                                         </span>
                                         <span className="inline-block border-2 bg-gradient-to-r from-cyan-200 to-blue-200 flex items-center justify-center border-solid border-white rounded-full -mr-3 w-[28px] h-[28px]">
-                                            <BsEmojiKiss size={18}/>
+                                            <BsEmojiKiss size={18} />
                                         </span>
                                     </div>
                                     {/* Reactions */}
@@ -187,7 +139,7 @@ export default async function TopicWithBg() {
                                 href="/"
                                 className="flex items-center pl-2 bg-transparent hover:bg-gray-100 rounded-md text-gray-500 px-1 text-sm gap-2 rounded-md leading-base "
                             >
-                                <FaRegComment size={24} className="mr-1"/>
+                                <FaRegComment size={24} className="mr-1" />
                                 6<span className="sm:inline hidden">comments</span>
                             </Link>
                         </div>
@@ -200,13 +152,13 @@ export default async function TopicWithBg() {
                                 className="inline-block rounded-md text-center bg-transparent hover:bg-gray-100 p-2 text-black"
                             >
                                 <span className="inline-flex f">
-                                    <CiBookmark size={24}/>
+                                    <CiBookmark size={24} />
                                 </span>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

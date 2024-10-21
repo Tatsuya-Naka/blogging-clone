@@ -29,6 +29,12 @@ const paths = {
     deleteTopicPage(userId: string, topicId: string) {
         return `/topic/edit/${topicId}/${userId}`;
     },
+    editTopicPage(userId: string, topicId: string) {
+        return `/topic/edit/update/${topicId}/${userId}`;
+    },
+    searchPage(term?: string) {
+        return `/search?term=${term}`
+    },
 };
 
 export default paths;

@@ -20,7 +20,7 @@ export default function HeaderItems({ id, name, image }: HeaderItemsProps) {
                 {/* Search icon */}
                 <div className="flex md:hidden">
                     <Link
-                        href="/"
+                        href={paths.searchPage('')}
                         className="bg-white text-gray-500 font-[700] mx-1 p-2 inline-block rounded-md w-full hover:text-blue-700 hover:bg-blue-300 "
                     >
                         <IoSearch size={24} />

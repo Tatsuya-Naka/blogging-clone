@@ -55,29 +55,31 @@ export default async function TopicCenter({ topic, user, tags }: TopicCenterProp
                     <div className="lg:px-16 lg:pt-8 md:px-12 md:pt-8 px-5 flex flex-col pt-5">
                         <div className="sm:items-start sm:flex-row flex flex-col">
                             {/* If there is a user id */}
-                            <div className="sm:mb-0 mb-4 sm:order-[9999] bg-orange-100 border-2 border-solid border-orange-100 rounded-md p-1">
-                                {/* Edit */}
-                                <Link
-                                    href="/"
-                                    className="px-2 text-sm inline-block cursor-pointer hover:opacity-60"
-                                >
-                                    Edit
-                                </Link>
-                                {/* Manage */}
-                                <Link
-                                    href={paths.deleteTopicPage(session?.user.id ?? "", topic.id)}
-                                    className="px-2 text-sm inline-block cursor-pointer hover:opacity-60"
-                                >
-                                    Manage
-                                </Link>
-                                {/* isPrivate ? Archive : hide */}
-                                <Link
-                                    href="/"
-                                    className="px-2 text-sm inline-block cursor-pointer hover:opacity-60"
-                                >
-                                    Hide
-                                </Link>
-                            </div>
+                            {session?.user.id === topic.userId &&
+                                <div className="sm:mb-0 mb-4 sm:order-[9999] bg-orange-100 border-2 border-solid border-orange-100 rounded-md p-1">
+                                    {/* Edit */}
+                                    <Link
+                                        href={paths.editTopicPage(session?.user.id ?? "", topic.id)}
+                                        className="px-2 text-sm inline-block cursor-pointer hover:opacity-60"
+                                    >
+                                        Edit
+                                    </Link>
+                                    {/* Manage */}
+                                    <Link
+                                        href={paths.deleteTopicPage(session?.user.id ?? "", topic.id)}
+                                        className="px-2 text-sm inline-block cursor-pointer hover:opacity-60"
+                                    >
+                                        Manage
+                                    </Link>
+                                    {/* isPrivate ? Archive : hide */}
+                                    <Link
+                                        href="/"
+                                        className="px-2 text-sm inline-block cursor-pointer hover:opacity-60"
+                                    >
+                                        Hide
+                                    </Link>
+                                </div>
+                            }
 
                             {/* User Info */}
                             <div className="flex mb-5 flex-1 items-start">
@@ -92,7 +94,7 @@ export default async function TopicCenter({ topic, user, tags }: TopicCenterProp
                                             className="rounded-full h-10 w-10"
                                         />
                                         :
-                                        <span className='w-10 h-10 rounded-full bg-lime-50' />
+                                        <div className='w-10 h-10 rounded-full bg-lime-500' />
                                     }
 
                                 </Link>
@@ -165,7 +167,7 @@ export default async function TopicCenter({ topic, user, tags }: TopicCenterProp
                                         className="rounded-full h-full w-full"
                                     />
                                     :
-                                    <div className="shrink-0 md:w-8 w-5 md:h-8 h-5 bg-lime-50 rounded-full" />
+                                    <div className="shrink-0 md:w-8 w-5 md:h-8 h-5 bg-lime-500 rounded-full" />
                                 }
                             </span>
 

@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getServerAuthSession } from "~/server/auth"
 import paths from "~/server/paths";
 import MenuBar from "./menu-bar";
 import SearchForm from "./search-form";
 import HeaderItems from "./header-items";
+import { getServerAuthSession } from "~/server/auth";
 
 export default async function Header() {
     const session = await getServerAuthSession();

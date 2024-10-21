@@ -15,7 +15,7 @@ export default async function HomeLists() {
                 {/* Advertisement 2 */}
                 <Ad2/>
                 {/* Topic lists */}
-                <TopicLists />
+                <TopicLists take={5} skip={1}/>
             </Suspense>
         </div>
     )
