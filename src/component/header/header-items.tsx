@@ -89,7 +89,7 @@ export default function HeaderItems({ id, name, image }: HeaderItemsProps) {
                         <li className="text-left pb-2 mb-2 border-b border-solid border-gray-500">
                             {/* Profile page */}
                             <Link
-                                href="/"
+                                href={paths.profilePage(id)}
                                 className="leading-5 bg-transparent hover:bg-blue-300 text-gray-700 hover:blue-500 flex px-4 py-2 rounded-md w-full"
                             >
                                 <div>
