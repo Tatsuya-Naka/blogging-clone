@@ -3,11 +3,7 @@ import { FaRegComment } from "react-icons/fa";
 import { FaRegBookmark } from "react-icons/fa";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 
-interface TopicCenterProps {
-    topicId: string;
-}
-
-export default async function TopicLeftSide({ topicId }: TopicCenterProps) {
+export default async function TopicLeftSide() {
     return (
         <div className="md:w-16 md:row-span-2">
             <div className="md:rounded-lg md:p-0 md:bg-gray-100 md:grid md:gap-5 md:sticky md:justify-stretch md:top-[128px] 

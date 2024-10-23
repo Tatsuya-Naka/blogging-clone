@@ -5,17 +5,23 @@ import { LuDot } from "react-icons/lu";
 import PostDateFormatter from "../common/post-date-format";
 import paths from "~/server/paths";
 import { getServerAuthSession } from "~/server/auth";
-import type { Tag, Topic, User } from "@prisma/client";
+import type { Tag, Topic, User, Comment } from "@prisma/client";
+import CommentTextAreaForm from "../comment/comment-textarea";
+import CommentLists from "../comment/comment-lists";
 
-interface TopicCenterProps {
-    topic: Topic;
-    user: User;
-    tags: Tag[];
+export type TopicContents = Topic & {
+    user: User,
+    tags: Tag[],
+    comments: Comment[],
 }
 
-export default async function TopicCenter({ topic, user, tags }: TopicCenterProps) {
+interface TopicCenterProps {
+    topic: TopicContents
+}
 
-    const tagsComp = tags.map((tag) => {
+export default async function TopicCenter({ topic }: TopicCenterProps) {
+
+    const tagsComp = topic.tags.map((tag) => {
         return (
             <Link
                 key={tag.id}
@@ -38,7 +44,7 @@ export default async function TopicCenter({ topic, user, tags }: TopicCenterProp
                     {topic.bgImage &&
                         <Link
                             // image url
-                            href=""
+                            href={topic.bgImage}
                             className="md:rounded-t-md max-h-[calc(100vh-56px-2rem)] overflow-hidden"
                         >
                             <Image
@@ -84,10 +90,10 @@ export default async function TopicCenter({ topic, user, tags }: TopicCenterProp
                             {/* User Info */}
                             <div className="flex mb-5 flex-1 items-start">
                                 {/* Icon */}
-                                <Link className="" href="/">
-                                    {user.image ?
+                                <Link className="" href={paths.profilePage(topic.user.id)}>
+                                    {topic.user.image ?
                                         <Image
-                                            src={user.image}
+                                            src={topic.user.image}
                                             alt="Icon Image"
                                             width={40}
                                             height={40}
@@ -100,8 +106,8 @@ export default async function TopicCenter({ topic, user, tags }: TopicCenterProp
                                 </Link>
                                 <div className="pl-3 flex-1 flex flex-col">
                                     {/* User name */}
-                                    <Link href="/" className="font-[500]">
-                                        {user.name}
+                                    <Link href={paths.profilePage(topic.user.id)} className="font-[500]">
+                                        {topic.user.name}
                                     </Link>
                                     {/* Posted date */}
                                     <PostDateFormatter date={topic.updatedAt}>
@@ -153,33 +159,21 @@ export default async function TopicCenter({ topic, user, tags }: TopicCenterProp
                                 </button>
                             </div>
                         </div>
-                        <form className="flex mb-4">
-                            <span
-                                className="mr-2 shrink-0 md:w-8 w-5 md:h-8 h-5 inline-block rounded-full align-middle"
-                            >
-                                {user.image ?
 
-                                    <Image
-                                        src={user.image}
-                                        alt="Icon Image"
-                                        width={32}
-                                        height={32}
-                                        className="rounded-full h-full w-full"
-                                    />
-                                    :
-                                    <div className="shrink-0 md:w-8 w-5 md:h-8 h-5 bg-lime-500 rounded-full" />
-                                }
-                            </span>
+                        {/* Comment form */}
+                        <CommentTextAreaForm userId={session?.user.id ?? ""} topicId={topic.id} topicUserIcon={session?.user.image ?? ""} defaultStyle={false} />
 
-                            {/* Comment area */}
-                            <div className="flex flex-col flex min-w-0 mb-3 bg-white border-1 border-solid border-gray-200 rounded-md w-full">
-                                <textarea
-                                    name="comment"
-                                    className="resize-none outline-none max-h-[40vh] w-full leading-base text-base p-2 border-2 rounded-md"
-                                    placeholder="Add to the discussion"
-                                />
-                            </div>
-                        </form>
+                        {/* Comment List */}
+                        {/* {topic.comments.map((comment) => {  
+                            return <CommentLists key={comment.id} comment={comment} user={{
+                                id: session?.user.id ?? "",
+                                image: session?.user.image ?? "",
+                            }}/>
+                        })} */}
+                        <CommentLists topicId={topic.id} user={{
+                            id: session?.user.id ?? "",
+                            image: session?.user.image ?? "",
+                        }} />
 
                         {/*  */}
                         <div className="text-center text-sm flex items-center justify-center">

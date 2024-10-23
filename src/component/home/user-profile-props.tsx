@@ -4,17 +4,17 @@ import Image from "next/image";
 import type { User } from "@prisma/client";
 import PostDateFormatter from "../common/post-date-format";
 import { useState } from "react";
+import paths from "~/server/paths";
 
 interface ProfilePopupProps {
-    path: string;
     date: Date;
     user: User;
     visitId: string;
 }
 
-export default function ProfilePupUp({ path, date, user, visitId }: ProfilePopupProps) {
+export default function ProfilePupUp({ date, user, visitId }: ProfilePopupProps) {
     const [isMouseOn, setIsMounseOn] = useState(false);
-
+    
     const popup = () => {
         return (
             <div className="absolute z-10 sm:w-[360px] shadow-md grid p-4 gap-4 bg-white rounded-md border-t-[2rem] border-t-solid border-t-black">
@@ -22,7 +22,7 @@ export default function ProfilePupUp({ path, date, user, visitId }: ProfilePopup
                 <div className="-mt-8">
                     {/* User profile */}
                     <Link
-                        href={path}
+                        href={paths.profilePage(user.id)}
                         className="flex"
                     >
                         <span className="mr-2 shrink-0 w-12 h-12 inline-block rounded-full bg-green-500 align-middle">
@@ -45,7 +45,7 @@ export default function ProfilePupUp({ path, date, user, visitId }: ProfilePopup
                 </div>
 
                 {/* Follow or Edit */}
-                <Link href="/" className="w-full py-2 px-4 text-base block rounded-md leading-base font-[500] text-center cursor-pointer bg-blue-800 hover:opacity-60 text-lime-50">
+                <Link href={visitId === user.id ? "/" : paths.profilePage(user.id)} className="w-full py-2 px-4 text-base block rounded-md leading-base font-[500] text-center cursor-pointer bg-blue-800 hover:opacity-60 text-lime-50">
                     {visitId === user.id ? "Edit Profile" : "Follow"}
                 </Link>
 
@@ -69,7 +69,7 @@ export default function ProfilePupUp({ path, date, user, visitId }: ProfilePopup
         <div className="mr-2">
             {/* Go to the user profile */}
             <Link
-                href={path}
+                href={paths.profilePage(user.id)}
                 className="md:hidden font-[500] text-black p-1 cursorpointer "
             >
                 {user.name}

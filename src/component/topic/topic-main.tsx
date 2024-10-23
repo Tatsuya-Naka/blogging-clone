@@ -14,6 +14,11 @@ export default async function TopicMainComp({ topicId }: TopicMainCompProps) {
         include: {
             tags: true,
             user: true,
+            comments: {
+                include: {
+                    user: true,
+                }
+            }
         }
     });
 
@@ -24,9 +29,9 @@ export default async function TopicMainComp({ topicId }: TopicMainCompProps) {
     return (
         <div className="text-base w-full max-w-[1380px] mx-auto grid md:gap-2 lg:gap-4 md:grid-cols-[4rem_1fr] lg:grid-cols-[4rem_7fr_3fr] md:p-4 ">
             {/* Left side bar */}
-            <TopicLeftSide topicId={topicId} />
+            <TopicLeftSide />
             {/* Center page */}
-            <TopicCenter topic={topic} user={topic.user} tags={topic.tags} />
+            <TopicCenter topic={topic} />
             {/* Right bar */}
             <TopicRightSide user={topic.user} />
         </div>

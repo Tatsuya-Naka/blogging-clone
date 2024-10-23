@@ -5,7 +5,6 @@ import { BsEmojiKiss } from "react-icons/bs";
 import { FaRegComment } from "react-icons/fa6";
 import { CiBookmark } from "react-icons/ci";
 import { db } from "~/server/db";
-import TopicListsDateFormat from './topic-date-format';
 import paths from "~/server/paths";
 import ProfilePupUp from "./user-profile-props";
 import { getServerAuthSession } from "~/server/auth";
@@ -47,7 +46,7 @@ export default async function TopicLists({ take, skip, term }: TopicLists) {
                                 {/* User image icon */}
                                 <div className="mr-2">
                                     <Link
-                                        href="/"
+                                        href={paths.profilePage(topic.userId)}
                                         className="w-8 h-8 inline-block rounded-full shrink-0"
                                     >
                                         {topic.user.image ?
@@ -66,7 +65,7 @@ export default async function TopicLists({ take, skip, term }: TopicLists) {
 
                                 {/* Name & Popup */}
                                 {topic.updatedAt &&
-                                    <ProfilePupUp path={"/"} date={topic.updatedAt} user={topic.user} visitId={session?.user.id ?? ""} />
+                                    <ProfilePupUp date={topic.updatedAt} user={topic.user} visitId={session?.user.id ?? ""} />
                                 }
 
                             </div>

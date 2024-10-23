@@ -35,6 +35,9 @@ const paths = {
     searchPage(term?: string) {
         return `/search?term=${term}`
     },
+    profilePage(userId: string) {
+        return `/profile/${userId}`;
+    },
 };
 
 export default paths;

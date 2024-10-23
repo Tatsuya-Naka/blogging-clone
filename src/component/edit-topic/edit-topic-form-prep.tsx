@@ -4,10 +4,9 @@ import EditTopicForm from "./edit-topic-form";
 
 interface EditTopicFormProps {
     topicId: string;
-    userId: string;
 }
 
-export default async function EditTopicFormPrep({topicId, userId}: EditTopicFormProps) {
+export default async function EditTopicFormPrep({topicId}: EditTopicFormProps) {
     const topic = await db.topic.findFirst({
         where: {id: topicId},
         include: {

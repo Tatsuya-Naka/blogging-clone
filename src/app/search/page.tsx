@@ -22,7 +22,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
                         <div className="md:hidden block mb-2">
                             {/* Search */}
-                            <SearchTopicForm term={term}/>
+                            <SearchTopicForm />
                         </div>
 
                         {/* Search Result term */}

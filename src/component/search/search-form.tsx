@@ -3,11 +3,7 @@ import { useFormState } from "react-dom";
 import { IoIosSearch } from "react-icons/io";
 import * as actions from "~/actions";
 
-interface SearchTopicFormProps {
-    term: string;
-}
-
-export default function SearchTopicForm({term}: SearchTopicFormProps) {
+export default function SearchTopicForm() {
     const [formState, action] = useFormState(actions.SearchTopicAction, {errors: {}});
 
     return (

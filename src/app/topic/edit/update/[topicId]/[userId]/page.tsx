@@ -17,7 +17,7 @@ export default async function EditTopicPage({ params }: EditTopicPageProps) {
         <HydrateClient>
             <div className="scroll-mt-14 bg-gray-200">
                 <Suspense fallback={<EditShowLoading />}>
-                    <EditTopicFormPrep topicId={topicId} userId={userId} />
+                    <EditTopicFormPrep topicId={topicId} />
                 </Suspense>
             </div>
         </HydrateClient>

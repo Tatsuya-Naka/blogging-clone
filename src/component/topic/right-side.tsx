@@ -4,6 +4,7 @@ import { FaFire } from "react-icons/fa";
 import { getServerAuthSession } from "~/server/auth";
 import PostDateFormatter from "../common/post-date-format";
 import type { User } from "@prisma/client";
+import paths from "~/server/paths";
 
 interface TopicCenterProps {
     user: User
@@ -19,7 +20,7 @@ export default async function TopicRightSide({ user }: TopicCenterProps) {
             <div className="grid pt-0 p-4 gap-4 bg-white md:rounded-md border-t-[2rem] border-t-solid border-t-black">
                 <div className="-mt-4 ">
                     {/* User Info */}
-                    <Link href="/" className="flex">
+                    <Link href={paths.profilePage(user.id)} className="flex">
                         {/* User Icon */}
                         <span className="mr-2 shrink-0 w-12 h-12 inline-block rounded-full bg-lime-50 align-middle">
                             {user.image ?
