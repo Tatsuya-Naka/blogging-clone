@@ -16,7 +16,8 @@ export const TopicRouter = createTRPCRouter({
                     title: {
                         contains: input.term,
                         mode: 'insensitive',
-                    }
+                    },
+                    isPublic: true,
                 },
                 take: 5,
             });

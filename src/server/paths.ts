@@ -41,6 +41,9 @@ const paths = {
     profileEditPage(userId: string) {
         return `/profile/edit/${userId}`;
     },
+    hideOrArchiveTopicPage(userId: string, topicId: string) {
+        return `/topic/edit/hide-archive/${topicId}/${userId}`;
+    },
 };
 
 export default paths;

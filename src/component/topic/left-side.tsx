@@ -3,7 +3,11 @@ import { FaRegComment } from "react-icons/fa";
 import { FaRegBookmark } from "react-icons/fa";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 
-export default async function TopicLeftSide() {
+interface TopicLeftSideProps {
+    comment: number;
+}
+
+export default async function TopicLeftSide({comment}: TopicLeftSideProps) {
     return (
         <div className="md:w-16 md:row-span-2">
             <div className="md:rounded-lg md:p-0 md:bg-gray-100 md:grid md:gap-5 md:sticky md:justify-stretch md:top-[128px] 
@@ -35,8 +39,8 @@ export default async function TopicLeftSide() {
                         </span>
 
                         <span className="md:min-w-auto md:ml-0 md:block text-gray-700 flex inline-flex min-w-6 ml-1">
-                            {/* Heart count */}
-                            0
+                            {/* comment count */}
+                            {comment}
                         </span>
                     </button>
 
@@ -49,7 +53,7 @@ export default async function TopicLeftSide() {
                             <FaRegBookmark size={24} />
                         </span>
                         <span className="md:min-w-auto md:ml-0 md:block text-gray-700 flex inline-flex min-w-6 ml-1">
-                            {/* Heart count */}
+                            {/* book mark */}
                             0
                         </span>
                     </button>

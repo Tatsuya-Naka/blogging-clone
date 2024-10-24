@@ -17,6 +17,7 @@ export default async function TopicWithBg() {
         include: {
             user: true,
             tags: true,
+            _count: {select: {comments: true}}
         },
         take: 1
     });
@@ -143,7 +144,7 @@ export default async function TopicWithBg() {
                                         className="flex items-center pl-2 bg-transparent hover:bg-gray-100 rounded-md text-gray-500 px-1 text-sm gap-2 rounded-md leading-base "
                                     >
                                         <FaRegComment size={24} className="mr-1" />
-                                        6<span className="sm:inline hidden">comments</span>
+                                        <p>{topic[0]._count.comments}</p><span className="sm:inline hidden">comments</span>
                                     </Link>
                                 </div>
 

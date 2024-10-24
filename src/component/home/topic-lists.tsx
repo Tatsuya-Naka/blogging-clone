@@ -27,6 +27,7 @@ export default async function TopicLists({ take, skip, term }: TopicLists) {
         include: {
             user: true,
             tags: true,
+            _count: {select: {comments: true}},
         },
         take: take,
         skip: skip
@@ -136,7 +137,7 @@ export default async function TopicLists({ take, skip, term }: TopicLists) {
                                         className="flex items-center pl-2 bg-transparent hover:bg-gray-100 rounded-md text-gray-500 px-1 text-sm gap-2 rounded-md leading-base "
                                     >
                                         <FaRegComment size={24} className="mr-1" />
-                                        6<span className="sm:inline hidden">comments</span>
+                                        {topic._count.comments}<span className="sm:inline hidden">comments</span>
                                     </Link>
                                 </div>
 

@@ -13,6 +13,9 @@ export type TopicContents = Topic & {
     user: User,
     tags: Tag[],
     comments: Comment[],
+    _count: {
+        comments: number,
+    }
 }
 
 interface TopicCenterProps {
@@ -65,24 +68,24 @@ export default async function TopicCenter({ topic }: TopicCenterProps) {
                                 <div className="sm:mb-0 mb-4 sm:order-[9999] bg-orange-100 border-2 border-solid border-orange-100 rounded-md p-1">
                                     {/* Edit */}
                                     <Link
-                                        href={paths.editTopicPage(session?.user.id ?? "", topic.id)}
+                                        href={paths.editTopicPage(session.user.id, topic.id)}
                                         className="px-2 text-sm inline-block cursor-pointer hover:opacity-60"
                                     >
                                         Edit
                                     </Link>
                                     {/* Manage */}
                                     <Link
-                                        href={paths.deleteTopicPage(session?.user.id ?? "", topic.id)}
+                                        href={paths.deleteTopicPage(session.user.id, topic.id)}
                                         className="px-2 text-sm inline-block cursor-pointer hover:opacity-60"
                                     >
                                         Manage
                                     </Link>
                                     {/* isPrivate ? Archive : hide */}
                                     <Link
-                                        href="/"
+                                        href={paths.hideOrArchiveTopicPage(session.user.id, topic.id)}
                                         className="px-2 text-sm inline-block cursor-pointer hover:opacity-60"
                                     >
-                                        Hide
+                                        {topic.isPublic ? "Hide" : "Archive"}
                                     </Link>
                                 </div>
                             }
@@ -141,7 +144,7 @@ export default async function TopicCenter({ topic }: TopicCenterProps) {
                         <div className="flex mb-6 justify-between items-center">
                             <div className="flex items-center">
                                 <h2 className="sm:text-2xl text-xl sm:leading-base font-[700] text-black leading-sm">
-                                    Top comments <span>(0)</span>
+                                    Top comments <span>({topic._count.comments})</span>
                                 </h2>
                                 <button
                                     className="inline-block rounded-md py-2 px-4 text-center"

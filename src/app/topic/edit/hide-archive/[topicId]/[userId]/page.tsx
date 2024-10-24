@@ -1,17 +1,29 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import Header from "~/component/header/header";
-import EditDeleteForm from "~/component/topic/edit-delete-form";
+import EditHideArchiveForm from "~/component/topic/edit-hide-archive-form";
+import { db } from "~/server/db";
 import paths from "~/server/paths";
 import { HydrateClient } from "~/trpc/server";
 
-interface DeleteTopicPageProps {
+interface HideArchiveTopicPageProps {
     params: {
         topicId: string;
         userId: string;
     }
 }
-export default async function DeleteTopicPage({ params }: DeleteTopicPageProps) {
+export default async function HideArchiveTopicPage({ params }: HideArchiveTopicPageProps) {
+    const { topicId, userId } = params;
+
+    const topic = await db.topic.findFirst({
+        where: {id: topicId, userId: userId}
+    });
+
+    if (!topic) {
+        return notFound();
+    }
+
     return (
         <HydrateClient>
             <Header />
@@ -23,14 +35,14 @@ export default async function DeleteTopicPage({ params }: DeleteTopicPageProps) 
                         </div>
                         <div className="text-black shadow-lg rounded-md px-16 py-8 bg-white">
                             <h1 className="mb-2 sm:text-2xl text-xl sm:leading-base font-[700] leading-sm">
-                                Are you sure you want to delete this topic?
+                                Are you sure you want to {topic.isPublic ? "hide" : "archive"} this topic?
                             </h1>
                             <p className="text-lg mb-4">
                                 You cannot undo this action, perhaps you just want to <Link href={paths.topicPage(params.topicId)} className="text-createAccountBG">unpublish</Link> instead?
                             </p>
 
                             <Suspense fallback={"Loading..."}>
-                                <EditDeleteForm topicId={params.topicId} />
+                                <EditHideArchiveForm topic={topic} />
                             </Suspense>
                         </div>
                     </div>

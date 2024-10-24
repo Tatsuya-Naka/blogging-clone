@@ -18,7 +18,8 @@ export default async function TopicMainComp({ topicId }: TopicMainCompProps) {
                 include: {
                     user: true,
                 }
-            }
+            },
+            _count: {select: {comments: true}},
         }
     });
 
@@ -29,7 +30,7 @@ export default async function TopicMainComp({ topicId }: TopicMainCompProps) {
     return (
         <div className="text-base w-full max-w-[1380px] mx-auto grid md:gap-2 lg:gap-4 md:grid-cols-[4rem_1fr] lg:grid-cols-[4rem_7fr_3fr] md:p-4 ">
             {/* Left side bar */}
-            <TopicLeftSide />
+            <TopicLeftSide comment={topic._count.comments}/>
             {/* Center page */}
             <TopicCenter topic={topic} />
             {/* Right bar */}

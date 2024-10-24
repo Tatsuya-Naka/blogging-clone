@@ -58,7 +58,7 @@ export async function ProfileEditAction(formState: ProfileEditActionProps, formD
                 Key: `${env.EDIT_PROFILE_PATH_FIRST}/${env.EDIT_PROFILE_PATH_SECOND}/${session.user.id}`
             })
 
-            const presignedUrl = await getSignedUrl(client, params, {expiresIn: 60});
+            const presignedUrl = await getSignedUrl(client, params, { expiresIn: 60 });
 
             const response = await fetch(presignedUrl, {
                 method: 'PUT',
@@ -96,30 +96,60 @@ export async function ProfileEditAction(formState: ProfileEditActionProps, formD
         }
     }
 
-    // update
-    try {
-        await db.user.update({
-            where: {id: session.user.id},
-            data: {
-                name: result.data.name,
-                bio: result.data.bio,
-                image: publicUrl,
+    // update User info
+    if (publicUrl && publicUrl.length > 0) {
+        try {
+            await db.user.update({
+                where: { id: session.user.id },
+                data: {
+                    name: result.data.name,
+                    bio: result.data.bio,
+                    image: publicUrl,
+                }
+            })
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                return {
+                    errors: {
+                        _form: [err.message]
+                    }
+                };
             }
-        })
-    } catch (err: unknown) {
-        if (err instanceof Error) {
-            return {
-                errors: {
-                    _form: [err.message]
-                }
-            };
+            else {
+                return {
+                    errors: {
+                        _form: ["Something wrong"]
+                    }
+                };
+            }
         }
-        else {
-            return {
-                errors: {
-                    _form: ["Something wrong"]
+    }
+
+    // need to update image in the comment table as well
+    if (publicUrl && publicUrl.length > 0) {
+        try {
+            await db.comment.updateMany({
+                where: { userId: session.user.id },
+                data: {
+                    userIcon: publicUrl,
+                    userName: result.data.name,
                 }
-            };
+            })
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                return {
+                    errors: {
+                        _form: [err.message]
+                    }
+                };
+            }
+            else {
+                return {
+                    errors: {
+                        _form: ["Something wrong"]
+                    }
+                };
+            }
         }
     }
 

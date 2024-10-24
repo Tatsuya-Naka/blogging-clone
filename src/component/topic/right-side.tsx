@@ -62,7 +62,7 @@ export default async function TopicRightSide({ user }: TopicCenterProps) {
                 <div className="pt-3">
                     <ul className="flex flex-col gap-3">
                         <li>
-                            <p className="text-sm font-[500] text-gray-800 ">404 bio</p>
+                            <p className="text-sm font-[500] text-gray-800 ">{user.bio}</p>
                         </li>
                         <li>
                             <p className="text-sm font-[700] text-gray-800 uppercase">Joined</p>

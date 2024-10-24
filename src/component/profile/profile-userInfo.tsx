@@ -9,11 +9,18 @@ interface ProfileUserInforProps {
 }
 
 export default async function ProfileUserInfo({ userId }: ProfileUserInforProps) {
+    const session = await getServerAuthSession();
+
+    const isUser = session?.user.id === userId;
+
     const userInfoAndTopics = await db.user.findFirst({
         where: { id: userId },
         include: {
-            _count: {select: {topics: true}},
+            _count: {select: {topics: {
+                where: isUser ? {} : {isPublic: true}
+            }}},
             topics: {
+                where: isUser ? {} : {isPublic: true},
                 include: {
                     _count: {select: {comments: true}},
                 },
@@ -27,8 +34,6 @@ export default async function ProfileUserInfo({ userId }: ProfileUserInforProps)
     const totalComments = userInfoAndTopics.topics.reduce(
         (sum, topics) => sum + topics._count.comments, 0
     );
-
-    const session = await getServerAuthSession();
 
     return (
         <div className="w-full">
