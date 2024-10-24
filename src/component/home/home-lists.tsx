@@ -3,11 +3,12 @@ import TopicWithBg from "./topic-with-bg";
 import Ad1 from "./advertisement1";
 import Ad2 from "./advertisement2";
 import TopicLists from "./topic-lists";
+import TopicListsLoading from "./topic-lists-loading";
 
 export default async function HomeLists() {
     return (
         <div className="">
-            <Suspense fallback={"Loading..."}>
+            <Suspense fallback={<TopicListsLoading />}>
                 {/* Advertisement 1 */}
                 <Ad1 />
                 {/* Topic with background picture */}

@@ -87,7 +87,6 @@ export async function createTopic(isSubmit: boolean, formState: createTopicProps
                 ContentType: 'image/jpeg',
             });
 
-            console.log("BGImageFile Type: ", bgImageFile.type);
             const presignedurl = await getSignedUrl(client, params, { expiresIn: 60 });
 
             const response = await fetch(presignedurl, {

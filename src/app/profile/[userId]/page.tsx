@@ -15,7 +15,7 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
     return (
         <HydrateClient>
             <Header />
-            <main className="pt-14 min-h-screen flex flex-1 text-lg bg-gray-100 w-full">
+            <main className="pt-14 min-h-screen flex flex-1 text-lg bg-gray-100 w-full relative z-0">
                 <Suspense fallback={"Loading..."}>
                     <ProfileUserInfo userId={userId} />
                 </Suspense>

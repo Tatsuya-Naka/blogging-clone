@@ -23,8 +23,8 @@ export default function MenuBar({ id }: MenuBarProps) {
             </button>
 
             {isButtonClicked &&
-                <div className="relative">
-                    <div className="bg-black opacity-50 fixed inset-0 z-0"> </div>
+                <div className="relative z-100">
+                    <div className="bg-black opacity-50 fixed inset-0 max-h-screen overflow-y-hidden"></div>
                     <div className="block fixed inset-0 z-[10]">
                         <div className="bg-white max-w-[300px] w-10/12 z-1 fixed h-screen overflow-y-auto ">
                             {/* header */}

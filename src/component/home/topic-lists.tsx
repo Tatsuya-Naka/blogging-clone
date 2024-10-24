@@ -55,7 +55,7 @@ export default async function TopicLists({ take, skip, term }: TopicLists) {
                                                 alt="User icon"
                                                 width={90}
                                                 height={90}
-                                                className="rounded-full h-full w-full align-bottom"
+                                                className="rounded-full h-full w-full align-bottom object-cover aspect-1/1"
                                             />
                                             :
                                             <div className="rounded-full w-8 h-8 bg-lime-500" />

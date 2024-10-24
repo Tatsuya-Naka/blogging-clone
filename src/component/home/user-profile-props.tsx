@@ -32,7 +32,7 @@ export default function ProfilePupUp({ date, user, visitId }: ProfilePopupProps)
                                     alt="icon"
                                     width={100}
                                     height={100}
-                                    className="rounded-full w-full h-full inline-block align-bottom"
+                                    className="rounded-full w-full h-full inline-block align-bottom object-cover aspect-1/1"
                                 />
                                 :
                                 <div className="rounded-full w-full h-full bg-lime-500" />
@@ -45,7 +45,7 @@ export default function ProfilePupUp({ date, user, visitId }: ProfilePopupProps)
                 </div>
 
                 {/* Follow or Edit */}
-                <Link href={visitId === user.id ? "/" : paths.profilePage(user.id)} className="w-full py-2 px-4 text-base block rounded-md leading-base font-[500] text-center cursor-pointer bg-blue-800 hover:opacity-60 text-lime-50">
+                <Link href={visitId === user.id ? paths.profileEditPage(user.id) : paths.profilePage(user.id)} className="w-full py-2 px-4 text-base block rounded-md leading-base font-[500] text-center cursor-pointer bg-blue-800 hover:opacity-60 text-lime-50">
                     {visitId === user.id ? "Edit Profile" : "Follow"}
                 </Link>
 

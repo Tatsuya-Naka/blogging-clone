@@ -33,6 +33,8 @@ export const env = createEnv({
     AWS_SECRET_ACCESS_KEY: z.string(),
     AWS_REGION: z.string(),
     CREATE_TOPIC_PATH: z.string(),
+    EDIT_PROFILE_PATH_FIRST: z.string(),
+    EDIT_PROFILE_PATH_SECOND: z.string(),
   },
 
   /**
@@ -64,6 +66,8 @@ export const env = createEnv({
     AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
     AWS_REGION: process.env.AWS_REGION,
     CREATE_TOPIC_PATH: process.env.CREATE_TOPIC_PATH,
+    EDIT_PROFILE_PATH_FIRST: process.env.EDIT_PROFILE_PATH_FIRST,
+    EDIT_PROFILE_PATH_SECOND: process.env.EDIT_PROFILE_PATH_SECOND, 
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

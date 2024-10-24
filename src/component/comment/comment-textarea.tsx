@@ -51,7 +51,7 @@ export default function CommentTextAreaForm({ userId, topicId, topicUserIcon, de
                         alt="Icon Image"
                         width={32}
                         height={32}
-                        className="rounded-full h-full w-full"
+                        className="rounded-full h-full w-full object-cover aspect-1/1"
                     />
                     :
                     <div className="shrink-0 md:w-8 w-5 md:h-8 h-5 bg-lime-500 rounded-full" />

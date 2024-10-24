@@ -63,7 +63,7 @@ export default async function TopicWithBg() {
                                                 alt="User icon"
                                                 width={90}
                                                 height={90}
-                                                className="rounded-full h-full w-full align-bottom"
+                                                className="rounded-full h-full w-full align-bottom object-cover aspect-1/1"
                                             />
                                             :
                                             <div className="rounded-full h-[90px] w-[90px] bg-lime-500" />

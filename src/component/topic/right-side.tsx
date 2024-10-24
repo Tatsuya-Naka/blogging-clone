@@ -29,7 +29,7 @@ export default async function TopicRightSide({ user }: TopicCenterProps) {
                                     alt="User Icon"
                                     width={100}
                                     height={100}
-                                    className="rounded-full w-full h-full inline-block align-bottom"
+                                    className="rounded-full w-full h-full inline-block align-bottom object-cover aspect-1/1"
                                 />
                                 :
                                 <span className='w-24 h-24 rounded-full inline-block align-bottom' />
@@ -45,7 +45,7 @@ export default async function TopicRightSide({ user }: TopicCenterProps) {
                 {/* Edit profile or follow */}
                 {user.id === session?.user.id ?
                     <Link
-                        href="/"
+                        href={paths.profileEditPage(session.user.id)}
                         className="w-full py-2 px-4 text-base rounded-md leading-base font-[500] text-center cursor-pointer bg-blue-500 text-white hover:bg-blue-800"
                     >
                         Edit

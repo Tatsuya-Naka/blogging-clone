@@ -30,7 +30,7 @@ export default function TopicList({topic, user}: TopicListProsp) {
                                 alt={user.name ?? ""}
                                 width={90}
                                 height={90}
-                                className="rounded-full h-8 w-8 inline-block"
+                                className="rounded-full h-8 w-8 inline-block object-cover aspect-1/1"
                             />
                             :
                             <div className="w-8 h-8 rounded-full inline-block bg-lime-500" />

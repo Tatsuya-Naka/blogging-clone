@@ -28,7 +28,7 @@ export default async function CommentItem({comment, user}: CommentItemProps) {
                         alt="Icon Image"
                         width={32}
                         height={32}
-                        className="rounded-full h-full w-full"
+                        className="rounded-full h-full w-full object-cover aspect-1/1"
                     />
                     :
                     <div className="shrink-0 md:w-8 w-5 md:h-8 h-5 bg-lime-500 rounded-full" />
@@ -39,9 +39,9 @@ export default async function CommentItem({comment, user}: CommentItemProps) {
                 <div className="flex flex-col w-full">
                     {/* Comment area */}
                     <div className={`flex flex-col flex min-w-0 bg-white border-1 border-solid border-gray-200 rounded-md w-full`}>
-                        <div className="max-h-[40vh] overflow-y-scroll min-h-16 rounded-md w-full leading-base text-base px-3 py-2 border-2">
+                        <div className="max-h-[40vh] overflow-y-scroll min-h-16 rounded-md w-full leading-base text-base px-3 py-1 border-2">
                             {/* Header */}
-                            <div className="h-10 w-full flex items-center justify-between text-base text-gray-600">
+                            <div className="my-0 w-full flex items-center justify-between text-base text-gray-600">
                                 <div className="flex items-center gap-0.5">
                                     <Link
                                         href={paths.profilePage(comment.userId)}
@@ -55,8 +55,8 @@ export default async function CommentItem({comment, user}: CommentItemProps) {
                                     <TopicListsDateFormat date={comment.updatedAt} />
                                 </div>
 
-                                <div className="hover:bg-gray-100 rounded-full p-2">
-                                    <BsThreeDots size={24} className="rounded-full cursor-pointer " />
+                                <div className="hover:bg-gray-100 rounded-full p-1">
+                                    <BsThreeDots size={18} className="rounded-full cursor-pointer " />
                                 </div>
                             </div>
 

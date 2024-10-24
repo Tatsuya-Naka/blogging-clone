@@ -73,7 +73,7 @@ export default function HeaderItems({ id, name, image }: HeaderItemsProps) {
                                     alt={name}
                                     width={32}
                                     height={32}
-                                    className="rounded-full h-8 w-8 align-bottom inline-block"
+                                    className="rounded-full h-8 w-8 align-bottom inline-block object-cover aspect-1/1"
                                 />
                                 :
                                 <div className="h-8 w-8 bg-lime-500 rounded-full " />
@@ -84,7 +84,7 @@ export default function HeaderItems({ id, name, image }: HeaderItemsProps) {
             </div>
             {/* Drop */}
             {isIconClick &&
-                <div className="h-100 absolute mt-14 left-2 right-2  min-w-[250px] z-[400] sm:w-[250px] sm:left-auto inline-block bg-white text-gray-800 rounded-md shadow-xl p-2 min-w-[250px]">
+                <div className="h-100 absolute z-100 mt-14 left-2 right-2  min-w-[250px] z-[400] sm:w-[250px] sm:left-auto inline-block bg-white text-gray-800 rounded-md shadow-xl p-2 min-w-[250px]">
                     <ul className="block">
                         <li className="text-left pb-2 mb-2 border-b border-solid border-gray-500">
                             {/* Profile page */}

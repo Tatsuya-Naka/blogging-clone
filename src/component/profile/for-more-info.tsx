@@ -9,6 +9,7 @@ import { FaTag } from "react-icons/fa";
 import type { User, Topic } from "@prisma/client";
 import { useState } from "react";
 import TopicList from "./topic-list";
+import paths from "~/server/paths";
 
 export type ForMoreInfoTopicsType = Topic & {
     _count: {
@@ -46,7 +47,7 @@ export default function ForMoreInfo({ userInfoAndTopics, totalComments, userId }
                                         alt={userInfoAndTopics.name ?? ""}
                                         width={128}
                                         height={128}
-                                        className="h-full w-full rounded-full align-bottom inline-block"
+                                        className="h-full w-full rounded-full align-bottom inline-block object-cover aspect-1/1"
                                     />
                                     :
                                     <div className="w-full h-full rounded-full align-bottom inline-block bg-lime-500" />
@@ -57,7 +58,7 @@ export default function ForMoreInfo({ userInfoAndTopics, totalComments, userId }
                             <div className="absolute md:top-16 top-8 right-0 left-0 flex justify-end pt-6 pr-6">
                                 {userId === userInfoAndTopics.id ?
                                     <Link
-                                        href="/"
+                                        href={paths.profileEditPage(userId)}
                                         className="py-2 px-4 text-base inline-block rounded-md leading-base font-[500] flex items-center shadow-md bg-blue-600 hover:bg-blue-800 text-white cursor-pointer"
                                     >
                                         Edit Profile

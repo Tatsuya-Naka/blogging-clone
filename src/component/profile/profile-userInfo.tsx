@@ -31,7 +31,7 @@ export default async function ProfileUserInfo({ userId }: ProfileUserInforProps)
     const session = await getServerAuthSession();
 
     return (
-        <div className="w-full ">
+        <div className="w-full">
             <ForMoreInfo userInfoAndTopics={userInfoAndTopics} totalComments={totalComments} userId={session?.user.id ?? ""}/>
         </div>
 

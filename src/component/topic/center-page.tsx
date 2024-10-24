@@ -97,7 +97,7 @@ export default async function TopicCenter({ topic }: TopicCenterProps) {
                                             alt="Icon Image"
                                             width={40}
                                             height={40}
-                                            className="rounded-full h-10 w-10"
+                                            className="rounded-full h-10 w-10 object-cover aspect-1/1"
                                         />
                                         :
                                         <div className='w-10 h-10 rounded-full bg-lime-500' />
@@ -164,12 +164,6 @@ export default async function TopicCenter({ topic }: TopicCenterProps) {
                         <CommentTextAreaForm userId={session?.user.id ?? ""} topicId={topic.id} topicUserIcon={session?.user.image ?? ""} defaultStyle={false} />
 
                         {/* Comment List */}
-                        {/* {topic.comments.map((comment) => {  
-                            return <CommentLists key={comment.id} comment={comment} user={{
-                                id: session?.user.id ?? "",
-                                image: session?.user.image ?? "",
-                            }}/>
-                        })} */}
                         <CommentLists topicId={topic.id} user={{
                             id: session?.user.id ?? "",
                             image: session?.user.image ?? "",

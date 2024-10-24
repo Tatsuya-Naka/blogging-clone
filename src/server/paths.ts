@@ -38,6 +38,9 @@ const paths = {
     profilePage(userId: string) {
         return `/profile/${userId}`;
     },
+    profileEditPage(userId: string) {
+        return `/profile/edit/${userId}`;
+    },
 };
 
 export default paths;
