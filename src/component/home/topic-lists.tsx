@@ -3,11 +3,11 @@ import Link from "next/link"
 import { BsEmojiSunglasses } from "react-icons/bs";
 import { BsEmojiKiss } from "react-icons/bs";
 import { FaRegComment } from "react-icons/fa6";
-import { CiBookmark } from "react-icons/ci";
 import { db } from "~/server/db";
 import paths from "~/server/paths";
 import ProfilePupUp from "./user-profile-props";
 import { getServerAuthSession } from "~/server/auth";
+import TopicListButton from "./topic-bookmark";
 
 interface TopicLists {
     take: number;
@@ -16,6 +16,8 @@ interface TopicLists {
 }
 
 export default async function TopicLists({ take, skip, term }: TopicLists) {
+    const session = await getServerAuthSession();
+
     const topics = await db.topic.findMany({
         where: {
             isPublic: true,
@@ -27,13 +29,16 @@ export default async function TopicLists({ take, skip, term }: TopicLists) {
         include: {
             user: true,
             tags: true,
+            bookmarks: session?.user ? {
+                select: {id: true, userId: true},
+                where: {userId: session.user.id},
+                take: 1
+            } : undefined,
             _count: {select: {comments: true}},
         },
         take: take,
         skip: skip
     });
-
-    const session = await getServerAuthSession();
 
     return (<>
         {
@@ -144,14 +149,7 @@ export default async function TopicLists({ take, skip, term }: TopicLists) {
                                 {/* Read and Fav */}
                                 <div className="flex items-center">
                                     <p className="text-sm mr-2 text-black">1 min read</p>
-                                    <button
-                                        type="button"
-                                        className="inline-block rounded-md text-center bg-transparent hover:bg-gray-100 p-2 text-black"
-                                    >
-                                        <span className="inline-flex f">
-                                            <CiBookmark size={24} />
-                                        </span>
-                                    </button>
+                                    <TopicListButton topicId={topic.id} isBookmarked={topic.bookmarks?.[0]?.userId ? topic.bookmarks?.[0]?.userId===session?.user.id : false}/>
                                 </div>
                             </div>
                         </div>

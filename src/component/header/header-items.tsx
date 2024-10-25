@@ -116,7 +116,7 @@ export default function HeaderItems({ id, name, image }: HeaderItemsProps) {
                         </li>
                         <li className="">
                             <Link
-                                href="/"
+                                href={paths.readingListPage(id)}
                                 className="bg-transparent hover:bg-blue-300 text-gray-700 hover:blue-500 flex px-4 py-2 rounded-md w-full"
                             >
                                 Reading List

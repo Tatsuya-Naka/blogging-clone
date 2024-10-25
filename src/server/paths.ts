@@ -44,6 +44,9 @@ const paths = {
     hideOrArchiveTopicPage(userId: string, topicId: string) {
         return `/topic/edit/hide-archive/${topicId}/${userId}`;
     },
+    readingListPage(userId: string) {
+        return `/readinglist/${userId}`;
+    },
 };
 
 export default paths;

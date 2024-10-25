@@ -5,7 +5,7 @@ export default async function TopicListsLoading() {
             <div className="py-0 h-full w-full bg-white md:rounded-md shadow-md">
                 {/* Bg image */}
                 <div
-                    className="w-[650px] h-[273px] md:rounded-t-md bg-gray-300 animate-pulse"
+                    className="w-full h-[273px] md:rounded-t-md bg-gray-300 animate-pulse"
                 />
 
                 {/* Title */}

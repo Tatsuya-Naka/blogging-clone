@@ -15,6 +15,7 @@ export type TopicContents = Topic & {
     comments: Comment[],
     _count: {
         comments: number,
+        bookmarks: number,
     }
 }
 
