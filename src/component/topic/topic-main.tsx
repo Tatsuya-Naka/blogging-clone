@@ -22,7 +22,7 @@ export default async function TopicMainComp({ topicId }: TopicMainCompProps) {
                     user: true,
                 }
             },
-            _count: {select: {comments: true, bookmarks: true, likes: true}},
+            _count: {select: {comments: {where: {deleted: false}}, bookmarks: true, likes: true}},
         }
     });
 

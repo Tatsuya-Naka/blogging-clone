@@ -11,7 +11,7 @@ interface EditTopicPageProps {
 }
 
 export default async function EditTopicPage({ params }: EditTopicPageProps) {
-    const { topicId, userId } = params;
+    const { topicId } = params;
 
     return (
         <HydrateClient>

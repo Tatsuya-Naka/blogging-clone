@@ -39,7 +39,7 @@ export default function CommentTextAreaReply({ userId, topicId, topicUserIcon, d
             setClicked(false);
             setIsOpen(false);
         }
-    }, [formState.success])
+    }, [formState, setIsOpen])
 
     return (
         <form className="flex mb-4" action={action}>

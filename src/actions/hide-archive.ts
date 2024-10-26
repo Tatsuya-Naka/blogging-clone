@@ -14,7 +14,7 @@ interface HideArchiveActionState {
     success?: boolean;
 }
 
-export async function HideArchiveAction(topic: Topic, formState: HideArchiveActionState): Promise<HideArchiveActionState> {
+export async function HideArchiveAction(topic: Topic): Promise<HideArchiveActionState> {
     const session = await getServerAuthSession();
     if (!session) {
         return {

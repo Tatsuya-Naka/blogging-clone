@@ -37,7 +37,7 @@ export default function CommentTextAreaForm({ userId, topicId, topicUserIcon, de
             setClicked(false);
             formState.success = false;
         }
-    }, [formState.success])
+    }, [formState])
 
     return (
         <form className="flex mb-4" action={action}>

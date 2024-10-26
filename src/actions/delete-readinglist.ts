@@ -12,7 +12,7 @@ interface DeleteReadingListState {
     success?: boolean;
 }
 
-export async function DeleteReadingList(bookmarkId: string ,formState: DeleteReadingListState): Promise<DeleteReadingListState> {
+export async function DeleteReadingList(bookmarkId: string): Promise<DeleteReadingListState> {
     const session = await getServerAuthSession();
     if (!session) {
         return {

@@ -105,6 +105,7 @@ model Comment {
   ancestorId  String?
   leafId    String?
   isLast    Boolean
+  deleted   Boolean @default(false)
   commentlikes    CommentLike[]
 }
 

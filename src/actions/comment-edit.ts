@@ -24,7 +24,7 @@ const CommentEditSchema = z.object({
     comment: z.string().min(5),
 });
 
-export async function CommentEditAction({commentId, topicId}: CommentEditActionProps, formState: CommentEditState, formData: FormData): Promise<CommentEditState> {
+export async function CommentEditAction({ commentId, topicId }: CommentEditActionProps, formState: CommentEditState, formData: FormData): Promise<CommentEditState> {
     const session = await getServerAuthSession();
     if (!session) {
         return {
@@ -46,7 +46,7 @@ export async function CommentEditAction({commentId, topicId}: CommentEditActionP
 
     try {
         await db.comment.update({
-            where: {id: commentId},
+            where: { id: commentId },
             data: {
                 content: result.data.comment,
             }
@@ -68,6 +68,67 @@ export async function CommentEditAction({commentId, topicId}: CommentEditActionP
     }
 
     revalidatePath(paths.topicPage(topicId))
+
+    return {
+        errors: {},
+        success: true,
+    };
+};
+
+interface CommentDeleteActionState {
+    errors: {
+        _form?: string[];
+    },
+    success?: boolean;
+}
+
+
+
+export async function CommentDeleteAction({commentId, topicId}: CommentEditActionProps): Promise<CommentDeleteActionState> {
+    const session = await getServerAuthSession();
+    if (!session) {
+        return {
+            errors: {
+                _form: ["You must signin or login before doing this"]
+            }
+        };
+    }
+
+    try {
+        const comment = await db.comment.findFirst({
+            where: {id: commentId}
+        });
+        if (comment && comment.isLast && comment.parentId) {
+            await db.comment.update({
+                where: {id: comment.parentId},
+                data: {
+                    isLast: true,
+                }
+            });
+        }
+        await db.comment.update({
+            where: {id: commentId, topicId: topicId, userId: session.user.id},
+            data: {
+                deleted: true,
+            },
+        });
+    } catch (err: unknown) {
+        if (err instanceof Error) {
+            return {
+                errors: {
+                    _form: [err.message]
+                }
+            };
+        } else {
+            return {
+                errors: {
+                    _form: ["Something wrong"]
+                }
+            };
+        }
+    }
+
+    revalidatePath(paths.topicPage(topicId));
 
     return {
         errors: {},

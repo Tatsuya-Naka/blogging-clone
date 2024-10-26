@@ -1,4 +1,4 @@
-    import { db } from "~/server/db";
+import { db } from "~/server/db";
 import CommentItem from "./comment-item";
 
 interface CommentListsProps {
@@ -30,11 +30,11 @@ export default async function CommentLists({ topicId, user }: CommentListsProps)
         },
         include: {
             commentlikes: user ? {
-                select: {id: true, userId: true},
-                where: {userId: user.id},
+                select: { id: true, userId: true },
+                where: { userId: user.id },
                 take: 1,
             } : undefined,
-            _count: {select: {commentlikes: {where: {topicId}}}},
+            _count: { select: { commentlikes: { where: { topicId } } } },
         },
         orderBy: {
             createdAt: 'asc',
@@ -60,11 +60,11 @@ export default async function CommentLists({ topicId, user }: CommentListsProps)
         },
         include: {
             commentlikes: user ? {
-                select: {id: true, userId: true},
-                where: {userId: user.id},
+                select: { id: true, userId: true },
+                where: { userId: user.id },
                 take: 1,
             } : undefined,
-            _count: {select: {commentlikes: {where: {topicId}}}},
+            _count: { select: { commentlikes: { where: { topicId } } } },
         },
         orderBy: {
             createdAt: 'asc',
@@ -87,11 +87,11 @@ export default async function CommentLists({ topicId, user }: CommentListsProps)
         },
         include: {
             commentlikes: user ? {
-                select: {id: true, userId: true},
-                where: {userId: user.id},
+                select: { id: true, userId: true },
+                where: { userId: user.id },
                 take: 1,
             } : undefined,
-            _count: {select: {commentlikes: {where: {topicId}}}},
+            _count: { select: { commentlikes: { where: { topicId } } } },
         },
         orderBy: {
             createdAt: 'asc',
@@ -103,21 +103,30 @@ export default async function CommentLists({ topicId, user }: CommentListsProps)
             {commentOfAncestor.map((ancestor) => {
                 return (
                     <div key={ancestor.id}>
-                        <CommentItem comment={ancestor} user={user} topicId={topicId}/>
+                        <CommentItem comment={{
+                            ...ancestor,
+                            content: ancestor.deleted ? "Comment deleted" : ancestor.content
+                        }} user={user} topicId={topicId} />
                         {
                             commentOfParent.filter(parent => ancestor.id === parent.parentId)
                                 .map((parent) => {
                                     return (
                                         <div key={parent.id}>
-                                            <CommentItem comment={parent} user={user} topicId={topicId} />
+                                            <CommentItem comment={{
+                                                ...parent,
+                                                content: parent.deleted ? "Comment deleted" : parent.content
+                                            }} user={user} topicId={topicId} />
                                             {
                                                 commentOfChildren.filter(children => (parent.id === children.parentId && ancestor.id === children.ancestorId)
-                                                || (parent.id === children.leafId && ancestor.id === children.ancestorId)
-                                            )
+                                                    || (parent.id === children.leafId && ancestor.id === children.ancestorId)
+                                                )
                                                     .map((children) => {
                                                         return (
                                                             <div key={children.id}>
-                                                                <CommentItem comment={children} user={user} topicId={topicId} />
+                                                                <CommentItem comment={{
+                                                                    ...children,
+                                                                    content: children.deleted ? "Comment deleted" : children.content
+                                                                }} user={user} topicId={topicId} />
                                                             </div>
                                                         )
 
