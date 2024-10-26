@@ -22,17 +22,24 @@ export default async function TopicMainComp({ topicId }: TopicMainCompProps) {
                     user: true,
                 }
             },
-            _count: {select: {comments: true, bookmarks: true}},
+            _count: {select: {comments: true, bookmarks: true, likes: true}},
         }
     });
 
     let isBookedmarked = false;
+    let isLiked = false;
     if (topic && session) {
         const bookmark = await db.bookmark.findFirst({
             where: {topicId: topic.id, userId: session.user.id},
         });
         if (bookmark) {
             isBookedmarked = true;
+        }
+        const like = await db.like.findFirst({
+            where: {topicId: topic.id, userId: session.user.id}
+        })
+        if (like) {
+            isLiked = true;
         }
     }
 
@@ -43,7 +50,7 @@ export default async function TopicMainComp({ topicId }: TopicMainCompProps) {
     return (
         <div className="text-base w-full max-w-[1380px] mx-auto grid md:gap-2 lg:gap-4 md:grid-cols-[4rem_1fr] lg:grid-cols-[4rem_7fr_3fr] md:p-4 ">
             {/* Left side bar */}
-            <TopicLeftSide topicId={topic.id} comment={topic._count.comments} bookmark={topic._count.bookmarks} isBookmarked={isBookedmarked}/>
+            <TopicLeftSide topicId={topic.id} comment={topic._count.comments} bookmark={topic._count.bookmarks} isBookmarked={isBookedmarked} like={topic._count.likes} isLiked={isLiked}/>
             {/* Center page */}
             <TopicCenter topic={topic} />
             {/* Right bar */}

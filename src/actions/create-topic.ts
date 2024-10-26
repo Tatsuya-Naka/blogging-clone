@@ -156,9 +156,4 @@ export async function createTopic(isSubmit: boolean, formState: createTopicProps
 
     revalidatePath(paths.topicPage(postId));
     redirect(paths.topicPage(postId));
-
-    return {
-        errors: {},
-        success: true,
-    }
 }

@@ -2,7 +2,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import paths from "~/server/paths";
-import { IoIosClose } from "react-icons/io";
 import { FaBold } from "react-icons/fa6";
 import { TbNut } from "react-icons/tb";
 import { useFormState } from "react-dom";
@@ -10,6 +9,7 @@ import * as actions from "~/actions"
 import PublishButton from "./publish-button";
 import { useState } from "react";
 import SaveButton from "./save-button";
+import CreateTopicCloseButton from "./close-button";
 
 export default function CreateTopicForm() {
     const [isSubmit, setIsSubmit] = useState(true);
@@ -75,14 +75,7 @@ export default function CreateTopicForm() {
                 </nav>
 
                 {/* close */}
-                <div className="lg:absolute lg:right-2 lg:top-2 lg:ml-0 ml-1">
-                    <button
-                        type="button"
-                        className="p-1 bg-transparent hover:bg-gray-200 text-black text-center hover:bg-white rounded-md"
-                    >
-                        <IoIosClose size={24} />
-                    </button>
-                </div>
+                <CreateTopicCloseButton />
             </div>
 
             {/* Form */}

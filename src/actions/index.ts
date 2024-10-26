@@ -6,3 +6,4 @@ export { CreateComment } from "./create-comment";
 export { ProfileEditAction } from "./profile-edit"
 export { HideArchiveAction } from "./hide-archive";
 export { DeleteReadingList } from "./delete-readinglist"
+export { CommentEditAction } from "./comment-edit";

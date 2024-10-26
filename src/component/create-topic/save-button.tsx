@@ -16,7 +16,7 @@ export default function SaveButton({isSubmit, ...props}: SaveButtonProps) {
             disabled={pending}
             {...props}
         >
-            {pending && !isSubmit && <AiOutlineLoading className="w-full h-full animate-spin text-black"/>}
+            {pending && !isSubmit && <AiOutlineLoading className=" animate-spin text-black"/>}
             Save draft
         </button>
     )

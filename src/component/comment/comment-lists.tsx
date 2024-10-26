@@ -28,6 +28,14 @@ export default async function CommentLists({ topicId, user }: CommentListsProps)
                 }
             ]
         },
+        include: {
+            commentlikes: user ? {
+                select: {id: true, userId: true},
+                where: {userId: user.id},
+                take: 1,
+            } : undefined,
+            _count: {select: {commentlikes: {where: {topicId}}}},
+        },
         orderBy: {
             createdAt: 'asc',
         }
@@ -50,6 +58,14 @@ export default async function CommentLists({ topicId, user }: CommentListsProps)
                 }
             ]
         },
+        include: {
+            commentlikes: user ? {
+                select: {id: true, userId: true},
+                where: {userId: user.id},
+                take: 1,
+            } : undefined,
+            _count: {select: {commentlikes: {where: {topicId}}}},
+        },
         orderBy: {
             createdAt: 'asc',
         }
@@ -69,6 +85,14 @@ export default async function CommentLists({ topicId, user }: CommentListsProps)
                 }
             ]
         },
+        include: {
+            commentlikes: user ? {
+                select: {id: true, userId: true},
+                where: {userId: user.id},
+                take: 1,
+            } : undefined,
+            _count: {select: {commentlikes: {where: {topicId}}}},
+        },
         orderBy: {
             createdAt: 'asc',
         }
@@ -79,13 +103,13 @@ export default async function CommentLists({ topicId, user }: CommentListsProps)
             {commentOfAncestor.map((ancestor) => {
                 return (
                     <div key={ancestor.id}>
-                        <CommentItem comment={ancestor} user={user} />
+                        <CommentItem comment={ancestor} user={user} topicId={topicId}/>
                         {
                             commentOfParent.filter(parent => ancestor.id === parent.parentId)
                                 .map((parent) => {
                                     return (
                                         <div key={parent.id}>
-                                            <CommentItem comment={parent} user={user} />
+                                            <CommentItem comment={parent} user={user} topicId={topicId} />
                                             {
                                                 commentOfChildren.filter(children => (parent.id === children.parentId && ancestor.id === children.ancestorId)
                                                 || (parent.id === children.leafId && ancestor.id === children.ancestorId)
@@ -93,7 +117,7 @@ export default async function CommentLists({ topicId, user }: CommentListsProps)
                                                     .map((children) => {
                                                         return (
                                                             <div key={children.id}>
-                                                                <CommentItem comment={children} user={user} />
+                                                                <CommentItem comment={children} user={user} topicId={topicId} />
                                                             </div>
                                                         )
 

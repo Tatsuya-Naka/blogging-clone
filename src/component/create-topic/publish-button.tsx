@@ -18,7 +18,7 @@ export default function PublishButton({isSubmit, ...props}: PublishButtonProps) 
             disabled={pending}
             {...props}
         >
-            {pending && isSubmit && <AiOutlineLoading className="w-full h-full animate-spin text-white"/>}
+            {pending && isSubmit && <AiOutlineLoading className="animate-spin text-white"/>}
             Publish
         </button>
     )
