@@ -2,6 +2,9 @@ const paths = {
     home() {
         return '/';
     },
+    homeWithAuth() {
+        return "/home";
+    },
     signInWithCredentials() {
         return '/api/auth/callback/credentials';
     },
