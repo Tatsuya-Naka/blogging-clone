@@ -32,5 +32,4 @@ export async function SearchTopicAction(formState: SearchTopicActionProps, formD
 
     revalidatePath(paths.searchPage(term));
     redirect(paths.searchPage(term));
-    
 }

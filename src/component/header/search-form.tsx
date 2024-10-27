@@ -29,11 +29,13 @@ export default function SearchForm() {
                     name="term"
                     className={`${!!formState?.errors?.term ? "bg-red-300" : "bg-transparent"} pl-10 pr-36 leading-relaxed py-1 px-2 text-base w-full resize-y border-2 border-gray-200 rounded-md outline-none transition-all duration-100 ease-out`}
                     onChange={handleInputChange}
+                    defaultValue={term}
                 />
                 {/* Search submit button */}
                 <button
                     type="submit"
                     className={`${!!formState?.errors?._form ? "bg-red-300" : "bg-transparent hover:bg-blue-200 "} absolute py-0 mt-0 right-auto inset-px p-2 text-gray-500 hover:text-blue-700 inline-block rounded-none text-center `}
+                    onClick={() => setTerm("")}
                 >
                     <IoSearch size={24} />
                 </button>
@@ -49,7 +51,7 @@ export default function SearchForm() {
             </div>
 
             {/* search result */}
-            {term && topics &&
+            {term.length > 0 && topics &&
                 <SearchTopicLists topics={topics}/>
             }
         </form>
