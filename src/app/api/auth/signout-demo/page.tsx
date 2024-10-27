@@ -8,25 +8,25 @@ export default async function Signout() {
         <HydrateClient>
             <Header />
             <main className=" min-h-screen flex flex-1 text-lg bg-gray-100 items-center justify-center">
-                <div className="flex items-center justify-center flex-col gap-2"
-                    // action={async() => {
-                    //     "use server";
-                    //     await signOut();
-                    // }}
+                <form className="flex items-center justify-center flex-col gap-2"
+                    action={async() => {
+                        "use server";
+                        await signOut();
+                    }}
                 >
                     <h1 className="text-2xl font-[700]">
                         Are you sure you want to sign out now?
                     </h1>
-                    <SignOutButton>
+                    {/* <SignOutButton>
                         Sign out
-                    </SignOutButton>
-                    {/* <button
+                    </SignOutButton> */}
+                    <button
                         type="submit"
                         className="bg-indigo-500 hover:bg-indigo-700 text-white px-4 py-2 rounded-md"
                     >
                         Sign out
-                    </button> */}
-                </div>
+                    </button>
+                </form>
             </main>
             {/* footer */}
             <footer className="p-12 bg-gray-300 text-black">

@@ -11,7 +11,7 @@ import { db } from "~/server/db";
 import paths from "~/server/paths";
 import { client } from "~/server/s3";
 
-interface EditTopicActionProps {
+interface EditTopicActionState {
     errors: {
         title?: string[];
         content?: string[];
@@ -25,7 +25,12 @@ const EditTopicActionSchema = z.object({
     content: z.string().min(20),
 });
 
-export async function EditTopicAction(topicId: string, formState: EditTopicActionProps, formData: FormData): Promise<EditTopicActionProps> {
+interface EditTOpicActionProps {
+    topicId: string;
+    isBgRemoved: boolean;
+}
+
+export async function EditTopicAction({topicId, isBgRemoved}: EditTOpicActionProps, formState: EditTopicActionState, formData: FormData): Promise<EditTopicActionState> {
     "use server";
     const session = await getServerAuthSession();
 
@@ -38,12 +43,14 @@ export async function EditTopicAction(topicId: string, formState: EditTopicActio
     }
 
     let isBgExist = false;
+    let bgImageUrl = '';
     try {
         const topic = await db.topic.findFirst({
             where: { id: topicId }
         });
-        if (topic) {
+        if (topic?.bgImage) {
             isBgExist = true;
+            bgImageUrl = topic.bgImage;
         }
     } catch (err) {
         if (err instanceof Error) {
@@ -75,7 +82,6 @@ export async function EditTopicAction(topicId: string, formState: EditTopicActio
 
     // AWS S3 Update or Post
     const bgImageFile = formData.get("coverImage") as File;
-    let bgImageUrl = '';
     if (bgImageFile.size > 0) {
         const params = new PutObjectCommand({
             Bucket: env.S3_BUCKET_NAME,
@@ -103,7 +109,7 @@ export async function EditTopicAction(topicId: string, formState: EditTopicActio
 
     } else {
         // DELETE bgImage stored in S3
-        if (isBgExist) {
+        if (isBgExist && isBgRemoved) {
             const params = new DeleteObjectCommand({
                 Bucket: env.S3_BUCKET_NAME,
                 Key: `${env.CREATE_TOPIC_PATH}/${topicId}`,
@@ -120,6 +126,7 @@ export async function EditTopicAction(topicId: string, formState: EditTopicActio
                     }
                 };
             }
+            bgImageUrl = '';
         }
     }
 

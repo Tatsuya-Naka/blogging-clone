@@ -10,6 +10,7 @@ import { useFormState } from "react-dom";
 import * as actions from "~/actions"
 import { useState } from "react";
 import EditSaveButton from "./save-button";
+import EditTopicCloseButton from "./edit-topic-close";
 
 interface EditTopicFormProps {
     topic: Topic;
@@ -18,7 +19,8 @@ interface EditTopicFormProps {
 
 export default function EditTopicForm({ topic, tags }: EditTopicFormProps) {
     const [isSaving, setIsSaving] = useState(false);
-    const [formState, action] = useFormState(actions.EditTopicAction.bind(null, topic.id), { errors: {} });
+    const [isBgRemoved, setIsBgRemoved] = useState(false);
+    const [formState, action] = useFormState(actions.EditTopicAction.bind(null, {topicId: topic.id, isBgRemoved: isBgRemoved}), { errors: {} });
     const [bgImageFile, setImageFile] = useState(topic.bgImage);
 
     const handleImageFile = (e: React.FormEvent<HTMLInputElement>) => {
@@ -28,6 +30,7 @@ export default function EditTopicForm({ topic, tags }: EditTopicFormProps) {
             const file = files[0];
             // Temporary want to see the upload image
             setImageFile(window.URL.createObjectURL(file));
+            setIsBgRemoved(false);
         }
     };
 
@@ -92,14 +95,7 @@ export default function EditTopicForm({ topic, tags }: EditTopicFormProps) {
                 </nav>
 
                 {/* close */}
-                <div className="lg:absolute lg:right-2 lg:top-2 lg:ml-0 ml-1">
-                    <button
-                        type="button"
-                        className="p-1 bg-transparent hover:bg-gray-200 text-black text-center hover:bg-white rounded-md"
-                    >
-                        <IoIosClose size={24} />
-                    </button>
-                </div>
+                <EditTopicCloseButton topicId={topic.id} />
             </div>
 
             {/* Form */}
@@ -131,7 +127,7 @@ export default function EditTopicForm({ topic, tags }: EditTopicFormProps) {
                                 {bgImageFile &&
                                     <button
                                         type="button"
-                                        onClick={() => setImageFile("")}
+                                        onClick={() => {setImageFile(""); setIsBgRemoved(true)}}
                                         className="bg-transparent cursor-pointer text-red-600 rounded-md py-1.5 px-3.5 leading-base text-base "
                                     >
                                         Remove
