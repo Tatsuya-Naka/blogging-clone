@@ -1,6 +1,6 @@
 export default async function TopicListsLoading() {
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center gap-2">
             {/* bg */}
             <div className="py-0 h-full w-full bg-white md:rounded-md shadow-md">
                 {/* Bg image */}
