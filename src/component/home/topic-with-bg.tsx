@@ -32,7 +32,7 @@ export default async function TopicWithBg() {
         <>
             {topic[0] &&
 
-                <div className="py-0 h-full w-full bg-white md:rounded-md shadow-md">
+                <div className="py-0 h-full w-full bg-white md:rounded-md shadow-[0_0_0_1px_rgba(23,23,23,0.05)] mb-2">
                     {/* Bg image */}
                     {topic[0]?.bgImage &&
                         < div className="object-contain max-h-[calc(90vh-56px)] overflow-hidden">
@@ -87,7 +87,7 @@ export default async function TopicWithBg() {
                         {/* Title & Tags */}
                         <div className="md:pl-10">
                             {/* title */}
-                            <h2 className="md:mb-1 text-black text-2xl font-bold hover:text-blue-800">
+                            <h2 className="md:mb-1 text-black sm:text-3xl text-xl font-bold hover:text-blue-800">
                                 <Link
                                     href={paths.topicPage(topic[0]?.id ?? "/")}
                                     className=""
@@ -146,16 +146,16 @@ export default async function TopicWithBg() {
                                     {/* Comments */}
                                     <Link
                                         href="/"
-                                        className="flex items-center pl-2 bg-transparent hover:bg-gray-100 rounded-md text-gray-500 px-1 text-sm gap-2 rounded-md leading-base "
+                                        className="flex items-center gap-1 bg-transparent hover:bg-gray-100 rounded-md text-gray-500 px-2 text-sm rounded-md leading-base "
                                     >
-                                        <FaRegComment size={24} className="mr-1" />
+                                        <FaRegComment size={18} className="sm:mr-0 mr-1" />
                                         <p>{topic[0]._count.comments}</p><span className="sm:inline hidden">comments</span>
                                     </Link>
                                 </div>
 
                                 {/* Read and Fav */}
                                 <div className="flex items-center">
-                                    <p className="text-sm mr-2 text-black">1 min read</p>
+                                    <p className="text-xs mr-2 text-black font-[300]">1 min read</p>
                                     <TopicListButton topicId={topic[0].id} isBookmarked={!!topic[0].bookmarks?.[0]?.userId ? topic[0].bookmarks?.[0].userId===session?.user.id : false}/>
                                 </div>
                             </div>

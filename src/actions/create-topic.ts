@@ -84,7 +84,7 @@ export async function createTopic(isSubmit: boolean, formState: createTopicProps
             const params = new PutObjectCommand({
                 Bucket: env.S3_BUCKET_NAME,
                 Key: `${env.CREATE_TOPIC_PATH}/${postId}`,
-                ContentType: 'image/jpeg',
+                ContentType: 'image/jpeg', 
             });
 
             const presignedurl = await getSignedUrl(client, params, { expiresIn: 60 });

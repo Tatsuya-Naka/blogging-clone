@@ -21,9 +21,9 @@ export default function TopicListButton({ topicId, isBookmarked }: TopicListButt
         >
             <span className="inline-flex">
                 {isBookmarked ?
-                    <IoBookmark size={24} className="fill-black" />
+                    <IoBookmark size={18} className="fill-black font-[700]" />
                     :                    
-                    <CiBookmark size={24} className="fill-black" />
+                    <CiBookmark size={18} className="fill-black font-[700]" />
                 }
             </span>
         </button>

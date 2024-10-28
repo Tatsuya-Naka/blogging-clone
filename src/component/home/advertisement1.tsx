@@ -6,7 +6,7 @@ import adImage1 from "../../../public/simple.png"
 
 export default function Ad1() {
     return (
-        <div className="md:p-5 p-4 text-2xl w-full shadow-md bg-white mb-1 md:rounded-md">
+        <div className="md:p-5 p-4 text-2xl w-full shadow-[0_0_0_1px_rgba(23,23,23,0.05)] bg-white mb-2 md:rounded-md">
             {/* Header */}
             <div className="flex md:mb-2 mb-3 items-center justify-between">
                 {/* Title */}

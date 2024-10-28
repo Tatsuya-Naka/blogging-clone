@@ -111,7 +111,7 @@ export default async function TopicListsLoading() {
             </div >
 
             {/* topic lists */}
-            <div className="py-0 h-full w-full bg-white md:rounded-md shadow-md">
+            <div className="py-0 h-full w-full bg-white md:rounded-md shadow-[0_0_0_1px_rgba(23,23,23,0.05)]">
                 {/* Title */}
                 <div className="md:p-5 p-4 sm:text-2xl mb-2 md:rounded-b-md">
                     {/* User icon  */}

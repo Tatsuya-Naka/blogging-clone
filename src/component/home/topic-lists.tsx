@@ -43,7 +43,7 @@ export default async function TopicLists({ take, skip, term }: TopicLists) {
     return (<>
         {
             topics.map((topic) => (
-                <div key={topic.id} className="py-0 w-full bg-white md:rounded-md shadow-md mb-2">
+                <div key={topic.id} className="py-0 w-full bg-white shadow-[0_0_0_1px_rgba(23,23,23,0.05)] rounded-md mb-2">
                     {/* Title */}
                     <div className="md:p-5 p-4 sm:text-2xl mb-2 md:rounded-b-md">
                         {/* User icon  */}
@@ -80,7 +80,7 @@ export default async function TopicLists({ take, skip, term }: TopicLists) {
                         {/* Title & Tags */}
                         <div className="md:pl-10">
                             {/* title */}
-                            <h2 className="md:mb-1 text-black text-2xl font-bold hover:text-blue-800">
+                            <h2 className="md:mb-1 text-black sm:text-2xl text-xl font-bold hover:text-blue-800">
                                 <Link
                                     href={paths.topicPage(topic.id)}
                                     className=""
@@ -139,16 +139,16 @@ export default async function TopicLists({ take, skip, term }: TopicLists) {
                                     {/* Comments */}
                                     <Link
                                         href="/"
-                                        className="flex items-center pl-2 bg-transparent hover:bg-gray-100 rounded-md text-gray-500 px-1 text-sm gap-2 rounded-md leading-base "
+                                        className="flex items-center bg-transparent hover:bg-gray-100 rounded-md text-gray-500 px-2 py-1 text-sm gap-1 rounded-md leading-base "
                                     >
-                                        <FaRegComment size={24} className="mr-1" />
+                                        <FaRegComment size={18} className="" />
                                         {topic._count.comments}<span className="sm:inline hidden">comments</span>
                                     </Link>
                                 </div>
 
                                 {/* Read and Fav */}
                                 <div className="flex items-center">
-                                    <p className="text-sm mr-2 text-black">1 min read</p>
+                                    <p className="text-xs mr-2 text-black font-[300]">1 min read</p>
                                     <TopicListButton topicId={topic.id} isBookmarked={topic.bookmarks?.[0]?.userId ? topic.bookmarks?.[0]?.userId===session?.user.id : false}/>
                                 </div>
                             </div>

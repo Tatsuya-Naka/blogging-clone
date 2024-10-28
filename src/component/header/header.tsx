@@ -12,9 +12,9 @@ export default async function Header() {
     return (
         <div className="relative z-[999]">
             <nav className="bg-white top-0 right-0 left-0 h-14 fixed">
-                <div className="max-w-[1380px] w-full h-full flex m-auto relative z-[999]">
+                <div className="max-w-[1380px] w-full h-full flex m-auto relative z-[999] lg:px-2 px-0">
                     {/* Menu, Title, and search box */}
-                    <div className="px-2 flex items-center flex-row w-full m-auto h-full h-full relative z-[999]">
+                    <div className="sm:px-2 flex items-center flex-row w-full m-auto h-full h-full relative z-[999]">
                         {/* Menu */}
                         <div className="flex md:hidden inline-block">
                             <MenuBar id={session?.user.id ?? ""} />
