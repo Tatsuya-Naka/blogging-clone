@@ -30,7 +30,7 @@ export default async function Header() {
                                     alt="Image"
                                     width={100}
                                     height={80}
-                                    className="aspect-[5/4] w-[50px] h-[40px]"
+                                    className="aspect-[5/4] w-[50px] h-[40px] shrink-0"
                                 />
                             </Link>
                         </div>
