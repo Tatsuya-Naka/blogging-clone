@@ -111,7 +111,7 @@ export default async function TopicLists({ take, skip, term }: TopicLists) {
                                     {/* Topic id */}
                                     <Link
                                         href="/"
-                                        className="pl-2 bg-transparent hover:bg-gray-100 rounded-md w-full px-1 py-3 flex gap-2 leading-base items-center "
+                                        className=" bg-transparent hover:bg-gray-100 rounded-md w-full px-2 py-1 flex gap-2 leading-base items-center "
                                     >
                                         <div className="flex items-center ">
                                             <div className="flex items-center">
