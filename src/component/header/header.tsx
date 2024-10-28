@@ -23,6 +23,7 @@ export default async function Header() {
                         {/* TItle icon */}
                         <div className="flex items-center ">
                             <Link
+                                className="shrink-0"
                                 href={paths.home()}
                             >
                                 <Image
@@ -30,7 +31,7 @@ export default async function Header() {
                                     alt="Image"
                                     width={100}
                                     height={80}
-                                    className="aspect-[5/4] w-[50px] h-[40px] shrink-0"
+                                    className="aspect-[5/4] w-[50px] h-[40px]"
                                 />
                             </Link>
                         </div>
