@@ -38,7 +38,7 @@ export default function HeaderItems({ id, name, image }: HeaderItemsProps) {
                     </div>
                 }
                 {/* create post or create account */}
-                <div className="mr-2">
+                <div className={`${id && "sm:block hidden"} mr-2`}>
                     <Link
                         href={id ? paths.createNewTopic() : paths.signInPath()}
                         className="flex items-center text-nowrap sm:mr-2 justify-center bg-transparent hover:bg-blue-300 text-blue-700 hover:text-white border-blue-700 hover:border-blue-300 border-2 px-4 py-1.5 rounded-md"
