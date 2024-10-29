@@ -21,8 +21,8 @@ export const env = createEnv({
       // (str) => process.env.VERCEL_URL ?? str,
       // VERCEL_URL doesn't include `https` so it cant be validated as a URL
       // process.env.VERCEL ? z.string() : z.string().url()
-      (str) => process.env.RAILWAY_URL ?? str,
-      process.env.RAILWAY_URL ? z.string() : z.string().url(),
+      (str) => process.env.RAILWAY_DEFAULT_URL ?? str,
+      process.env.RAILWAY_DEFAULT_URL ? z.string() : z.string().url(),
     ),
     // DISCORD_CLIENT_ID: z.string(),
     // DISCORD_CLIENT_SECRET: z.string(),
