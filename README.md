@@ -16,11 +16,14 @@ Creating a fully functional authentication using NextAuthJs was challenging sinc
 I will explain my app in detail since I cannot provide the actual prototype to the public for security purposes. However, I can describe what it looks like with videos so that you can figure out how I did for my project. 
 
 ### Overview
-[https://github.com/Tatsuya-Naka/blogging-clone.wiki.git](https://github.com/user-attachments/assets/eb6f2904-0094-4372-9688-f2ba4b1e8d32)
+https://github.com/user-attachments/assets/40233ee0-2dd7-49a9-b124-854be6017d35
 
 ### Authentication
 I added Google OAuth, GitHub OAuth, and credentials for the authentication using NextAuthJs. Once you successfully sign up, you can log in with your option. 
 
-https://github.com/user-attachments/assets/15e062d5-5511-4abb-a863-f6076d049153
+https://github.com/user-attachments/assets/6983c331-b769-4d5b-a29d-c9813b1866b8
 
-### 
+### Create, Edit, Archive & Hide, & Delete a topic
+Once you log in or sign up, you are allowed to create a topic and see it in public. If you would like to hide your topic, edit, or delete, you can also do these actions with no issues. 
+
+https://github.com/user-attachments/assets/6a25f7c0-752c-4d47-b9b9-32fe6fce115f
