@@ -27,3 +27,21 @@ https://github.com/user-attachments/assets/6983c331-b769-4d5b-a29d-c9813b1866b8
 Once you log in or sign up, you are allowed to create a topic and see it in public. If you would like to hide your topic, edit, or delete, you can also do these actions with no issues. 
 
 https://github.com/user-attachments/assets/6a25f7c0-752c-4d47-b9b9-32fe6fce115f
+
+### Search
+You can search for topics by typing keywords related to their titles.
+
+https://github.com/user-attachments/assets/11a117cd-f668-49d3-8c9a-2221ba8584c9
+
+### Comments
+You can create a comment for topics and can also reply to them.
+
+https://github.com/user-attachments/assets/6128a7ff-1bab-4e31-84da-14f6cd22c0f1
+
+### Reply
+https://github.com/user-attachments/assets/edbb3fd5-c003-4d4a-8905-867e02ec4e25
+
+### Bookmarks & Likes
+You can save your favorite topics by bookmarking them and express your appreciation by liking both topics and comments.
+
+https://github.com/user-attachments/assets/5605d114-d8f9-4f90-b6ff-4b0a4c8c76dd
