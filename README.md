@@ -1,29 +1,22 @@
-# Create T3 App
+# [dev.to](https://dev.to/) clone using T3-app and AWS S3
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+This is my project to understand fundamental web development using NextJs and Typescript for two weeks.
 
-## What's next? How do I make an app with this?
+## Backgrounds
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+In [dev.to](https://dev.to/), we can post, delete, hide, and update topics. Moreover, we can leave comments and add bookmarks and likes to topics and comments. This is the main feature of this original app. 
+Then, I would like to learn about the mechanism of these structures and processes and how they work. From these points of view, I decided to create a dev to clone a web app with a full-stack development package, t3-app.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Review
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+Creating a fully functional authentication using NextAuthJs was challenging since I was unsure how to implement the feature into an app. I referred to the Udemy course called [Build apps using NextJS v14 using App Router, Next Auth, NextUI, and TailwindCSS! Learn the latest version of NextJS!](https://www.udemy.com/course/next-js-the-complete-developers-guide/learn/lecture/40861083?start=525#overview). This was the greatest tool to configure my knowledge of the web fundamentals using NextJs and Typescript. 
 
-## Learn More
+## Functionality of my app
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+I will explain my app in detail since I cannot provide the actual prototype to the public for security purposes. However, I can describe what it looks like with videos so that you can figure out how I did for my project. 
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+### Authentication
+I added Google OAuth, GitHub OAuth, and credentials for the authentication using NextAuthJs. Once you successfully sign up, you can log in with your option. 
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+[https://github.com/Tatsuya-Naka/blogging-clone.wiki.git](https://github.com/user-attachments/assets/eb6f2904-0094-4372-9688-f2ba4b1e8d32)
+### 
