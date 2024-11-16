@@ -34,7 +34,7 @@ export default async function TopicLists({ take, skip, term }: TopicLists) {
                 where: {userId: session.user.id},
                 take: 1
             } : undefined,
-            _count: {select: {comments: true}},
+            _count: {select: {comments: {where: {deleted: false}}}},
         },
         take: take,
         skip: skip

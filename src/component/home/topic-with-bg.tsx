@@ -23,7 +23,7 @@ export default async function TopicWithBg() {
                 select: {id: true, userId: true},
                 where: {userId: session.user.id},
             } : undefined,
-            _count: {select: {comments: true}}
+            _count: {select: {comments: {where: {deleted: false}}}}
         },
         take: 1
     });
