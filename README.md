@@ -1,6 +1,6 @@
 # [dev.to](https://dev.to/) clone using T3-app and AWS S3
 
-This is my project to understand fundamental web development using NextJs and Typescript for two weeks.
+This is my project to understand fundamental web development using NextJs and Typescript.
 
 ## Backgrounds
 
@@ -15,8 +15,12 @@ Creating a fully functional authentication using NextAuthJs was challenging sinc
 
 I will explain my app in detail since I cannot provide the actual prototype to the public for security purposes. However, I can describe what it looks like with videos so that you can figure out how I did for my project. 
 
+### Overview
+[https://github.com/Tatsuya-Naka/blogging-clone.wiki.git](https://github.com/user-attachments/assets/eb6f2904-0094-4372-9688-f2ba4b1e8d32)
+
 ### Authentication
 I added Google OAuth, GitHub OAuth, and credentials for the authentication using NextAuthJs. Once you successfully sign up, you can log in with your option. 
 
-[https://github.com/Tatsuya-Naka/blogging-clone.wiki.git](https://github.com/user-attachments/assets/eb6f2904-0094-4372-9688-f2ba4b1e8d32)
+https://github.com/user-attachments/assets/15e062d5-5511-4abb-a863-f6076d049153
+
 ### 
