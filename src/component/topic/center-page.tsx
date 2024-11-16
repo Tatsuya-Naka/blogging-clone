@@ -145,7 +145,7 @@ export default async function TopicCenter({ topic }: TopicCenterProps) {
                         <div className="flex mb-6 justify-between items-center">
                             <div className="flex items-center">
                                 <h2 className="sm:text-2xl text-xl sm:leading-base font-[700] text-black leading-sm">
-                                    Top comments <span>({topic._count.comments})</span>
+                                    Top comments <span>({topic._count.comments})</span>                                    
                                 </h2>
                                 <button
                                     className="inline-block rounded-md py-2 px-4 text-center"

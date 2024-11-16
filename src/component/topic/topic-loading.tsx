@@ -111,7 +111,7 @@ export default async function TopicLoading() {
                             <div className="flex mb-6 justify-between items-center">
                                 <div className="flex items-center">
                                     <h2 className="sm:text-2xl text-xl sm:leading-base font-[700] text-black leading-sm">
-                                        Top comments <span>(<div className="rounded-full bg-gray-300 animate-pulse h-[27.5px] w-[27.5px]" />)</span>
+                                    Top comments <span className="inline-flex content-center">(<div className="rounded-full bg-gray-300 animate-pulse h-[27.5px] w-[27.5px]" />)</span>
                                     </h2>
                                     <button
                                         className="inline-block rounded-md py-2 px-4 text-center"
