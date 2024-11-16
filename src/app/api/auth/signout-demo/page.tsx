@@ -1,5 +1,5 @@
 import { signOut } from "next-auth/react";
-import SignOutButton from "~/component/auth/signout-button";
+// import SignOutButton from "~/component/auth/signout-button";
 import Header from "~/component/header/header";
 import { HydrateClient } from "~/trpc/server";
 

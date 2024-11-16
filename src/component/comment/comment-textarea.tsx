@@ -3,6 +3,15 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FaBold } from "react-icons/fa6";
 import { FaItalic } from "react-icons/fa";
+import { FiPaperclip } from "react-icons/fi";
+import { FaListOl } from "react-icons/fa";
+import { FaListUl } from "react-icons/fa";
+import { TbLetterH } from "react-icons/tb";
+import { ImQuotesLeft } from "react-icons/im";
+import { IoMdCode } from "react-icons/io";
+import { BiCodeBlock } from "react-icons/bi";
+import { AiOutlineThunderbolt } from "react-icons/ai";
+import { FaRegImage } from "react-icons/fa6";
 import { HiDotsVertical } from "react-icons/hi";
 import { useFormState } from "react-dom";
 import * as actions from "~/actions";
@@ -83,6 +92,60 @@ export default function CommentTextAreaForm({ userId, topicId, topicUserIcon, de
                                     className="cursor-pointer"
                                 >
                                     <FaItalic size={24} className="align-bottom font-[500]" />
+                                </button>
+                                <button
+                                    type="button"
+                                    className="cursor-pointer"
+                                >
+                                    <FiPaperclip size={24} className="align-bottom font-[500]" />
+                                </button>
+                                <button
+                                    type="button"
+                                    className="cursor-pointer"
+                                >
+                                    <FaListOl size={24} className="align-bottom font-[500]" />
+                                </button>
+                                <button
+                                    type="button"
+                                    className="cursor-pointer"
+                                >
+                                    <FaListUl size={24} className="align-bottom font-[500]" />
+                                </button>
+                                <button
+                                    type="button"
+                                    className="cursor-pointer"
+                                >
+                                    <TbLetterH size={24} className="align-bottom font-[500]" />
+                                </button>
+                                <button
+                                    type="button"
+                                    className="cursor-pointer"
+                                >
+                                    <ImQuotesLeft size={24} className="align-bottom font-[500]" />
+                                </button>
+                                <button
+                                    type="button"
+                                    className="cursor-pointer"
+                                >
+                                    <IoMdCode size={24} className="align-bottom font-[500]" />
+                                </button>
+                                <button
+                                    type="button"
+                                    className="cursor-pointer"
+                                >
+                                    <BiCodeBlock size={24} className="align-bottom font-[500]" />
+                                </button>
+                                <button
+                                    type="button"
+                                    className="cursor-pointer"
+                                >
+                                    <AiOutlineThunderbolt size={24} className="align-bottom font-[500]" />
+                                </button>
+                                <button
+                                    type="button"
+                                    className="cursor-pointer"
+                                >
+                                    <FaRegImage size={24} className="align-bottom font-[500]" />
                                 </button>
                             </div>
 

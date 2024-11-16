@@ -3,7 +3,6 @@ import type { Tag, Topic } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import paths from "~/server/paths";
-import { IoIosClose } from "react-icons/io";
 import { FaBold } from "react-icons/fa6";
 import { TbNut } from "react-icons/tb";
 import { useFormState } from "react-dom";

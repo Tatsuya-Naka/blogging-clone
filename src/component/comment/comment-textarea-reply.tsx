@@ -8,6 +8,15 @@ import { useFormState } from "react-dom";
 import * as actions from "~/actions";
 import CreateCommentButton from "./create-comment-button";
 import ReplyDismissButton from "./reply-dismiss-button";
+import { FiPaperclip } from "react-icons/fi";
+import { FaListOl } from "react-icons/fa";
+import { FaListUl } from "react-icons/fa";
+import { TbLetterH } from "react-icons/tb";
+import { ImQuotesLeft } from "react-icons/im";
+import { IoMdCode } from "react-icons/io";
+import { BiCodeBlock } from "react-icons/bi";
+import { AiOutlineThunderbolt } from "react-icons/ai";
+import { FaRegImage } from "react-icons/fa6";
 
 interface CommentTextAreaFormProps {
     userId: string;
@@ -74,7 +83,7 @@ export default function CommentTextAreaReply({ userId, topicId, topicUserIcon, d
                     {clicked &&
                         <div className="abolute bottom-0 left-0 right-0 rounded-b-md h-10 w-full bg-white border-2 shadow-sm border-solid border-gray-100 flex items-cenmter justify-between">
                             <div className="flex items-center gap-5 px-3 py-1">
-                                <button
+                            <button
                                     type="button"
                                     className="cursor-pointer"
                                 >
@@ -85,6 +94,60 @@ export default function CommentTextAreaReply({ userId, topicId, topicUserIcon, d
                                     className="cursor-pointer"
                                 >
                                     <FaItalic size={24} className="align-bottom font-[500]" />
+                                </button>
+                                <button
+                                    type="button"
+                                    className="cursor-pointer"
+                                >
+                                    <FiPaperclip size={24} className="align-bottom font-[500]" />
+                                </button>
+                                <button
+                                    type="button"
+                                    className="cursor-pointer"
+                                >
+                                    <FaListOl size={24} className="align-bottom font-[500]" />
+                                </button>
+                                <button
+                                    type="button"
+                                    className="cursor-pointer"
+                                >
+                                    <FaListUl size={24} className="align-bottom font-[500]" />
+                                </button>
+                                <button
+                                    type="button"
+                                    className="cursor-pointer"
+                                >
+                                    <TbLetterH size={24} className="align-bottom font-[500]" />
+                                </button>
+                                <button
+                                    type="button"
+                                    className="cursor-pointer"
+                                >
+                                    <ImQuotesLeft size={24} className="align-bottom font-[500]" />
+                                </button>
+                                <button
+                                    type="button"
+                                    className="cursor-pointer"
+                                >
+                                    <IoMdCode size={24} className="align-bottom font-[500]" />
+                                </button>
+                                <button
+                                    type="button"
+                                    className="cursor-pointer"
+                                >
+                                    <BiCodeBlock size={24} className="align-bottom font-[500]" />
+                                </button>
+                                <button
+                                    type="button"
+                                    className="cursor-pointer"
+                                >
+                                    <AiOutlineThunderbolt size={24} className="align-bottom font-[500]" />
+                                </button>
+                                <button
+                                    type="button"
+                                    className="cursor-pointer"
+                                >
+                                    <FaRegImage size={24} className="align-bottom font-[500]" />
                                 </button>
                             </div>
 

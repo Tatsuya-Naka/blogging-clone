@@ -10,6 +10,17 @@ import PublishButton from "./publish-button";
 import { useState } from "react";
 import SaveButton from "./save-button";
 import CreateTopicCloseButton from "./close-button";
+import { FaItalic } from "react-icons/fa6";
+import { FiPaperclip } from "react-icons/fi";
+import { FaListOl } from "react-icons/fa";
+import { FaListUl } from "react-icons/fa";
+import { TbLetterH } from "react-icons/tb";
+import { ImQuotesLeft } from "react-icons/im";
+import { IoMdCode } from "react-icons/io";
+import { BiCodeBlock } from "react-icons/bi";
+import { AiOutlineThunderbolt } from "react-icons/ai";
+import { FaRegImage } from "react-icons/fa6";
+import { BsThreeDotsVertical } from "react-icons/bs";
 
 export default function CreateTopicForm() {
     const [isSubmit, setIsSubmit] = useState(true);
@@ -161,7 +172,77 @@ export default function CreateTopicForm() {
                                 <button
                                     className="mr-1 p-2 bg-transparent hover:bg-blue-100 text-black hover:text-blue-500 rounded-md inline-block text-center"
                                 >
-                                    <FaBold size={24} className="align-bottom" />
+                                    <FaItalic size={24} className="align-bottom" />
+                                </button>
+                            </li>
+                            <li className="">
+                                <button
+                                    className="mr-1 p-2 bg-transparent hover:bg-blue-100 text-black hover:text-blue-500 rounded-md inline-block text-center"
+                                >
+                                    <FiPaperclip size={24} className="align-bottom" />
+                                </button>
+                            </li>
+                            <li className="">
+                                <button
+                                    className="mr-1 p-2 bg-transparent hover:bg-blue-100 text-black hover:text-blue-500 rounded-md inline-block text-center"
+                                >
+                                    <FaListOl size={24} className="align-bottom" />
+                                </button>
+                            </li>
+                            <li className="">
+                                <button
+                                    className="mr-1 p-2 bg-transparent hover:bg-blue-100 text-black hover:text-blue-500 rounded-md inline-block text-center"
+                                >
+                                    <FaListUl size={24} className="align-bottom" />
+                                </button>
+                            </li>
+                            <li className="">
+                                <button
+                                    className="mr-1 p-2 bg-transparent hover:bg-blue-100 text-black hover:text-blue-500 rounded-md inline-block text-center"
+                                >
+                                    <TbLetterH size={24} className="align-bottom" />
+                                </button>
+                            </li>
+                            <li className="">
+                                <button
+                                    className="mr-1 p-2 bg-transparent hover:bg-blue-100 text-black hover:text-blue-500 rounded-md inline-block text-center"
+                                >
+                                    <ImQuotesLeft size={24} className="align-bottom" />
+                                </button>
+                            </li>
+                            <li className="">
+                                <button
+                                    className="mr-1 p-2 bg-transparent hover:bg-blue-100 text-black hover:text-blue-500 rounded-md inline-block text-center"
+                                >
+                                    <IoMdCode size={24} className="align-bottom" />
+                                </button>
+                            </li>
+                            <li className="">
+                                <button
+                                    className="mr-1 p-2 bg-transparent hover:bg-blue-100 text-black hover:text-blue-500 rounded-md inline-block text-center"
+                                >
+                                    <BiCodeBlock size={24} className="align-bottom" />
+                                </button>
+                            </li>
+                            <li className="">
+                                <button
+                                    className="mr-1 p-2 bg-transparent hover:bg-blue-100 text-black hover:text-blue-500 rounded-md inline-block text-center"
+                                >
+                                    <AiOutlineThunderbolt size={24} className="align-bottom" />
+                                </button>
+                            </li>
+                            <li className="">
+                                <button
+                                    className="mr-1 p-2 bg-transparent hover:bg-blue-100 text-black hover:text-blue-500 rounded-md inline-block text-center"
+                                >
+                                    <FaRegImage size={24} className="align-bottom" />
+                                </button>
+                            </li>
+                            <li className="ml-auto">
+                                <button
+                                    className="mr-1 p-2 bg-transparent hover:bg-blue-100 text-black hover:text-blue-500 rounded-md inline-block text-center"
+                                >
+                                    <BsThreeDotsVertical size={24} className="align-bottom" />
                                 </button>
                             </li>
                         </ul>
