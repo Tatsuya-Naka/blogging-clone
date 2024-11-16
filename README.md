@@ -16,4 +16,6 @@ Creating a fully functional authentication using NextAuthJs was challenging sinc
 I will explain my app in detail since I cannot provide the actual prototype to the public for security purposes. However, I can describe what it looks like with videos so that you can figure out how I did for my project. 
 
 ### Authentication
+I added Google OAuth, GitHub OAuth, and credentials for the authentication using NextAuthJs. Once you successfully sign up, you can log in with your option. 
 
+### 
