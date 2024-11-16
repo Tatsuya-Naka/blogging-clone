@@ -18,4 +18,5 @@ I will explain my app in detail since I cannot provide the actual prototype to t
 ### Authentication
 I added Google OAuth, GitHub OAuth, and credentials for the authentication using NextAuthJs. Once you successfully sign up, you can log in with your option. 
 
+https://github.com/Tatsuya-Naka/blogging-clone.wiki.git
 ### 
